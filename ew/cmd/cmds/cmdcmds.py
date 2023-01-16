@@ -1775,8 +1775,8 @@ async def help(cmd):
             topic = random.choice(channel_topics)
 
             # Generate the silly page number for fun
-            random.seed(topic)
-            page_number = random.randint(1, 1337)
+            page_random_class = random.Random(topic)
+            page_number = page_random_class.randint(1, 1337)
 
             # Create a response with a part about the topic name and a reminder about game guides.
             response = "Excerpt from the Game Guide, page {}, on **{}**:\n\n".format(page_number, topic) + ewcfg.help_responses[topic] + "\n\nDon't forget - portable, fully-featured Game Guides can be purchased at Neo Milwaukee State or NLACU for 10,000 slime!"
@@ -3327,11 +3327,13 @@ async def cockdraw(cmd):
         if size >= 10:
             size = user_data.rand_seed % 1000
     else:
-        random.seed(object)
-        size = float((random.randint(1, 100000) + user_data.rand_seed) % 110) / 10
+        # Create a seeded random class for !measure, as to not overwrite the global random seed
+        measure_random_class = random.Random(object)
+
+        size = float((measure_random_class.randint(1, 100000) + user_data.rand_seed) % 110) / 10
 
         if size >= 10:
-            size = (random.randint(1, 100000) + user_data.rand_seed) % 1000
+            size = (measure_random_class.randint(1, 100000) + user_data.rand_seed) % 1000
 
     if cmd.tokens[0] == '!cockdraw':
         response = "You slowly stick your hand in your pants..."

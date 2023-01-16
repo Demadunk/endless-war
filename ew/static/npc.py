@@ -61,7 +61,7 @@ EwNpc(
         rarity=10,
         rewards = [
         {ewcfg.item_id_oldcd: [100, 1, 1],
-         "bobocuatroscalp":[100, 1, 1]},
+         }, #"bobocuatroscalp":[100, 1, 1]
         ],
         starting_statuses=[ewcfg.status_enemy_barren_id, '5leveltrainer', ewcfg.status_enemy_trainer_id],
 
@@ -81,7 +81,7 @@ EwNpc(
                 "greenlightdistrictloop":["*Miku is gleefully shopping.*"],
                 "slimesendcliffsloop":["*Noticing the ocean waves, Miku frantically scrambles for land.*"]},
     func_ai = npcutils.chatty_npc_action,
-    image_profile = "https://cdn.discordapp.com/attachments/431238867459375145/832804357731778620/Miku_02.png", # "I'll illustrate one soon" - not final
+    image_profile = "https://rfck.app/npc/juviemiku_thumb.png", # "I'll illustrate one soon" - not final
     defaultslime = 160000,
     defaultlevel = 20,
     rewards = [
@@ -256,12 +256,12 @@ EwNpc(
     poi_list = [ewcfg.poi_id_vagrantscorner, ewcfg.poi_id_speakeasy, ewcfg.poi_id_assaultflatsbeach, ewcfg.poi_id_beachresort],
     dialogue = {"talk":["Hey, you want some cocktails? I'm pretty sure I can break into my quad-G GGGGramp's stash.", "Man, this place is a lot hotter than back home. If I wasn't slime I'd be melting.", "SLIME, my dude!!!", "Let's party!", "Slimmy slime slime slozzle!", "Hey you want some cocktails Im pretty sure I can break into Gramps stash in Vagrants Corner.", "Man this place is a lot hotter than back home if I wasn’t slime I’m pretty sure I’d be melting", "I am not saying my fucking catchphrase simp!", "Hey I heard you got the tier three sub from some sandwich shop…I’ll give you an autograph if you give me it.", "Did you know the speak easy also turns into a boat. Yeah me either.", "Check out the tiki bar out in grand toronto when you get the chance dude!"],
                 "raretalk":["I'm gonna go lie down.", "I'm not saying my fucking catchphrase."],
-                "hit":["HUK---", "HYEHK-"],
-                "die":["Party on, contest winners. Party on."],
+                "hit":["HUK---", "HYEHK-", "OW! WHAT THE FUCKS WRONG WITH YOU!"],
+                "die":["Party on, contest winners. Party on.", "Oh…No…B R O…"],
                 "thekingswifessonspeakeasytalk":["Did you know this speakeasy used to be a boat? Yeah, me neither."]
                 },
     func_ai = npcutils.generic_npc_action,
-    image_profile = "https://cdn.discordapp.com/attachments/927511712473702411/995441965548195841/slimes_mackenzie.png", # Another with no PFP given so here's a placeholder
+    image_profile = "https://cdn.discordapp.com/attachments/994241049012748399/998319239469486120/SLIMEZ.png", # Another with no PFP given so here's a placeholder
     defaultslime = 1500000,
     defaultlevel = 40,
     rewards = [
@@ -549,7 +549,7 @@ EwNpc(
     defaultlevel = 1,
     rarity=5,
     rewards = [
-    {ewcfg.item_id_dankwheat:[1, 1, 1]} #maybe you'll get a dankwheat. try it, sicko.
+    {'sloxpendant':[1, 1, 1]} #good luck.
     ],
     starting_statuses=["buddyslox"],
 ),

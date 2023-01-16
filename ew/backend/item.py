@@ -1083,7 +1083,7 @@ def give_item_multi(id_list = None, destination = None):
                 ))
 
         except Exception as e:
-            ewutils.logMsg('Failed to mass move items with Exception: {}'.format(e))
+            ewutils.logMsg('Failed to mass move items with Exception: {}. \nDrop List:{} \nDestination:{}'.format(e, ','.join(map(str, id_list)), destination))
             traceback.print_exc(file=sys.stdout)
 
         item_cache = bknd_core.get_cache(obj_type="EwItem")

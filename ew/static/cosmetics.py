@@ -2563,6 +2563,15 @@ EwCosmeticItem(
         freshness = 9,
         acquisition = "smelting",
     ),
+    EwCosmeticItem(
+        id_cosmetic = "sloxpendant",
+        str_name = "Slox Pendant",
+        str_desc = "Whoever's holding this had to snap a cute little Slox's neck many, many times. Over and over. You have no recollection what it even looks like because you can't stand to remind yourself of what you did.",
+        rarity = "patrician",
+        durability = 250000,
+        style = "evil",
+        freshness = 0
+    ),
 ]
 
 

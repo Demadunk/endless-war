@@ -540,7 +540,7 @@ def canAttack(cmd):
         if shootee_data.life_state == ewcfg.life_state_kingpin:
             # Disallow killing generals.
             response = "He is hiding in his ivory tower and playing video games like a retard."
-        elif poi.id_poi == 'hangemsquare' and market.clock != 12 and (ewcfg.status_dueling not in user_data.getStatusEffects() or ewcfg.status_dueling not in shootee_data.getStatusEffects()):
+        elif poi.id_poi == 'hangemsquare' and market.clock != 12 and (ewcfg.status_dueling not in user_data.getStatusEffects() or ewcfg.status_dueling not in shootee_data.getStatusEffects()) and ewutils.square_duel != 2:
             response = "It's not noon yet. Everything in its own time."
         elif (time_now - user_data.time_lastkill) < ewcfg.cd_kill:
             # disallow kill if the player has killed recently
@@ -849,6 +849,9 @@ async def attackEnemy(cmd):
         slimes_tobleed = 0
         # slimes_directdamage = 0
         slimes_splatter = 0
+    elif enemy_data.enemytype == ewcfg.enemy_type_npc:
+        slimes_drained *= 0.25
+        slimes_splatter *= 0.25
 
     if (ewcfg.mutation_id_nosferatu in user_mutations or ewcfg.dh_stage >= 4) and (market_data.clock < 6 or market_data.clock >= 20):
         levelup_response += user_data.change_slimes(n=slimes_splatter * 0.6, source=ewcfg.source_killing)
@@ -903,7 +906,7 @@ async def attackEnemy(cmd):
             ewstats.increment_stat(user=user_data, metric=weapon.stat)
 
         # Give a bonus to the player's weapon skill for killing a stronger enemy.
-        if enemy_data.enemytype != ewcfg.enemy_type_sandbag and enemy_data.level >= user_data.slimelevel and weapon is not None:
+        if enemy_data.enemytype != ewcfg.enemy_type_sandbag and enemy_data.level >= user_data.slimelevel and weapon is not None and user_data.weaponskill < 14:
             user_data.add_weaponskill(n=1, weapon_type=weapon.id_weapon)
 
         slimes_todistrict = enemy_data.slimes / 2
@@ -995,7 +998,9 @@ async def attackEnemy(cmd):
     else:
         if enemy_data.enemytype == ewcfg.enemy_type_npc:
             npc_obj = static_npc.active_npcs_map.get(enemy_data.enemyclass)
+            user_data.persist()
             await npc_obj.func_ai(keyword='hit', enemy=enemy_data, channel=cmd.message.channel, user_data = user_data)
+            user_data = EwUser(member=cmd.message.author)
         # A non-lethal blow!
         if weapon != None:
             if miss:

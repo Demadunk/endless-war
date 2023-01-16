@@ -3865,23 +3865,23 @@ world_events = [
         event_type=ewcfg.event_type_rally,
         str_name="a political candidate's rally.",
         pois=[],
-        length=2,  # 11h
+        length=7,  # 11h
         buffer=0,  # 13h
         str_event_start="This rally needs security!",
         str_event_ongoing="A candidate is looking to keep ruffians out of this event.",
-        str_event_end="Time to begin.",
-        str_check_text="A political rally is about to start in ",
+        str_event_end="",
+        str_check_text="A political rally is going on in",
     ),
     EwEventDef(
         event_type=ewcfg.event_type_rally_end,
         str_name="a political candidate's rally, now over.",
         pois=[],
-        length=3,  # 11h
+        length=5,  # 11h
         buffer=2,  # 13h
         str_event_start="The street is full of thugs! Clear 'em out to claim a relic.",
         str_event_ongoing="Some candidate's trying to lie to the people right now! Get the peanut gallery to shut up!",
-        str_event_end="The ground crashes together, forever sealing the raid den in the earth.",
-        str_check_text="A political rally is going on in ",
+        str_event_end="Looks like their speech is finished.",
+        str_check_text="There are ruffians interrupting a rally in",
     ),
 ]
 

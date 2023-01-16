@@ -152,7 +152,7 @@ async def weather_tick(id_server = None):
                             member = guild.get_member(user_data.id_user)
                             # Stop movement
                             ewutils.moves_active[user_data.id_user] = 0
-                            rutils.movement_checker(user_data, poi_static.id_to_poi.get(user_data.poi), deposited_district)
+                            await rutils.movement_checker(user_data, poi_static.id_to_poi.get(user_data.poi), deposited_district)
                             # Move the player into the neighbor
                             await ewrolemgr.updateRoles(client=client, member=member, new_poi=deposited_district)
                             user_data.poi = deposited_district_object.id_poi
@@ -332,10 +332,12 @@ async def weather_cycle(id_server):
 
         # Seed the randomness based on day, clock, and a random unknown consistent stat 
         seed = (market_data.day * 24) + market_data.clock + (market_data.donated_poudrins + 1) 
-        random.seed(seed)
+
+        # Create a seeded random class
+        market_random_class = random.Random(seed)
 
         # Potentially change the weather
-        if random.randrange(3) == 0 or valid_weather == False:
+        if market_random_class.randrange(3) == 0 or valid_weather == False:
                 pattern_count = len(weather_static.weather_list)
 
                 if pattern_count > 1:
@@ -343,7 +345,7 @@ async def weather_cycle(id_server):
 
                     # Randomly select a new weather pattern. Try again if we get the same one we currently have.
                     while market_data.weather == weather_old:
-                        pick = random.randrange(len(weather_static.weather_list))
+                        pick = market_random_class.randrange(len(weather_static.weather_list))
                         market_data.weather = weather_static.weather_list[pick].name
                     market_data.persist()
                 # Log message for statistics tracking.
@@ -377,15 +379,20 @@ def forecast_txt(id_server=None, resp_type="long"):
         elif resp_type == "short":
             weather_icon_list.append("〰️" if ewutils.DEBUG else ewcfg.emote_blank)
         blank += 1
-                                                                         
+
+    # Create a random class, to seed multiple times
+    market_random_class = random.Random()
+
     # Simulate the next week, ig.
     while len(weather_icon_list) < 42:
 
         # Simulate weather
         seed = (current_day * 24) + current_clock + (market_data.donated_poudrins + 1) 
-        random.seed(seed)
 
-        if random.randrange(3) == 0:
+        # Re-initialize the random class
+        market_random_class.seed(seed)
+
+        if market_random_class.randrange(3) == 0:
             pattern_count = len(weather_static.weather_list)
 
             if pattern_count > 1:
@@ -393,21 +400,21 @@ def forecast_txt(id_server=None, resp_type="long"):
 
                 # Randomly select a new weather pattern. Try again if we get the same one we currently have.
                 while current_weather == weather_old:
-                    pick = random.randrange(len(weather_static.weather_list))
+                    pick = market_random_class.randrange(len(weather_static.weather_list))
                     current_weather = weather_static.weather_list[pick].name
                 weather_icon = ewcfg.weather_icon_map.get(current_weather)
 
         # Place icon
         if current_clock % 4 == 0:
             chance = 1
-            if (24 >= len(weather_icon_list) > 18) and random.randrange(2) != 0:
+            if (24 >= len(weather_icon_list) > 18) and market_random_class.randrange(2) != 0:
                 chance = 2
-            elif (30 >= len(weather_icon_list) > 24) and random.randrange(3) != 0:
+            elif (30 >= len(weather_icon_list) > 24) and market_random_class.randrange(3) != 0:
                 chance = 3
-            elif len(weather_icon_list) > 30 and random.randrange(4) != 0:
+            elif len(weather_icon_list) > 30 and market_random_class.randrange(4) != 0:
                 chance = 5
 
-            if random.randrange(chance) != 0:
+            if market_random_class.randrange(chance) != 0:
                 weather_icon_list.append("❓")
             else:
                 weather_icon_list.append(weather_icon)

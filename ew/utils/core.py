@@ -66,6 +66,8 @@ tv_counter = 0
 
 conversations = {}
 
+square_duel = 0
+
 class EwVector2D:
     vector = [0, 0]
 
@@ -842,7 +844,13 @@ def total_size(o, verbose=False):
 
 
 def is_district_empty(poi = ''):  # quick function to check presence in a district
-    data = bknd_core.execute_sql_query('SELECT {id_user} FROM users WHERE {poi} = %s LIMIT 1'.format(poi=ewcfg.col_poi, id_user=ewcfg.col_id_user), (poi,))
+    time_now = int(time.time())
+    data = bknd_core.execute_sql_query('SELECT {id_user} FROM users WHERE {poi} = %s and ({time_last_action} > %s or {time_last_enter} > %s) LIMIT 1'.format(
+        poi=ewcfg.col_poi,
+        id_user=ewcfg.col_id_user,
+        time_last_action=ewcfg.col_time_last_action,
+        time_last_enter = ewcfg.col_time_lastenter),
+        (poi, time_now-120, time_now-120))
     if len(data) > 0:
         return False
     else:

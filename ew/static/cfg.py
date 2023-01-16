@@ -1721,7 +1721,7 @@ moon_special = "green" #               glows
 
 #enemy count limits
 max_npcs = 20
-max_normal_enemies = 50
+max_normal_enemies = 500
 # strength of the burn applied every weather tick by firestorms
 firestorm_slime_burn = 100000
 
@@ -4443,36 +4443,35 @@ enemy_drop_tables = {
     ],
     enemy_type_juvie: [
         {item_id_slimepoudrin: [50, 1, 2]},
-        {rarity_plebeian: [5, 1, 1]},
-        {"crop": [30, 1, 1]},
+        {rarity_plebeian: [1, 1, 1]},
+        {"crop": [10, 1, 1]},
         {item_id_tradingcardpack: [20, 1, 1]},
     ],
     enemy_type_dinoslime: [
         {item_id_slimepoudrin: [100, 2, 4]},
-        {rarity_plebeian: [10, 1, 1]},
+        {rarity_plebeian: [3, 1, 1]},
         {item_id_dinoslimemeat: [33, 1, 2]},
         {item_id_monsterbones: [100, 3, 5]},
     ],
     enemy_type_slimeadactyl: [
         {item_id_slimepoudrin: [100, 3, 5]},
-        {rarity_plebeian: [10, 1, 1]},
+        {rarity_plebeian: [3, 1, 1]},
         {item_id_monsterbones: [100, 3, 5]},
     ],
     enemy_type_microslime: [
-        {rarity_patrician: [100, 1, 1]},
+        {rarity_patrician: [25, 1, 1]},
     ],
     enemy_type_slimeofgreed: [
         {item_id_slimepoudrin: [100, 2, 2]},
     ],
     enemy_type_desertraider: [
         {item_id_slimepoudrin: [100, 1, 2]},
-        {rarity_plebeian: [50, 1, 1]},
-        {"crop": [50, 3, 6]},
+        {rarity_plebeian: [12, 1, 1]},
         {weapon_id_awp: [1, 1, 1]}
     ],
     enemy_type_mammoslime: [
         {item_id_slimepoudrin: [75, 5, 6]},
-        {rarity_patrician: [20, 1, 1]},
+        {rarity_patrician: [5, 1, 1]},
         {item_id_monsterbones: [100, 1, 3]},
     ],
     enemy_type_doubleheadlessdoublehorseman: [
@@ -4480,7 +4479,6 @@ enemy_drop_tables = {
         {item_id_slimepoudrin: [100, 22, 22]},
         {rarity_plebeian: [100, 22, 22]},
         {rarity_patrician: [100, 22, 22]},
-        {"crop": [100, 22, 22]},
         {item_id_dinoslimemeat: [100, 22, 22]},
         {item_id_tradingcardpack: [100, 22, 22]},
     ],
@@ -4489,25 +4487,24 @@ enemy_drop_tables = {
     ],
     enemy_type_megaslime: [
         {item_id_slimepoudrin: [100, 4, 8]},
-        {rarity_plebeian: [80, 1, 2]},
-        {rarity_patrician: [30, 1, 1]},
+        {rarity_plebeian: [20, 1, 2]},
+        {rarity_patrician: [7, 1, 1]},
     ],
     enemy_type_slimeasaurusrex: [
         {item_id_slimepoudrin: [100, 8, 15]},
-        {rarity_plebeian: [50, 1, 2]},
-        {rarity_patrician: [20, 1, 2]},
+        {rarity_plebeian: [12, 1, 2]},
+        {rarity_patrician: [5, 1, 2]},
         {item_id_dinoslimemeat: [100, 3, 4]},
         {item_id_monsterbones: [100, 3, 5]},
     ],
     enemy_type_greeneyesslimedragon: [
         {item_id_dragonsoul: [100, 1, 1]},
         {item_id_slimepoudrin: [100, 15, 20]},
-        {rarity_patrician: [100, 1, 1]},
+        {rarity_patrician: [25, 1, 1]},
         {item_id_monsterbones: [100, 5, 10]},
     ],
     enemy_type_unnervingfightingoperator: [
         {item_id_slimepoudrin: [100, 1, 1]},
-        {"crop": [100, 1, 1]},
         {item_id_dinoslimemeat: [100, 1, 1]},
         {item_id_tradingcardpack: [100, 1, 1]},
         {item_id_monofilamentfragment: [100, 1, 1]},
@@ -4536,21 +4533,18 @@ enemy_drop_tables = {
     ],
     enemy_type_bandito: [
         {item_id_slimepoudrin: [100, 1, 3]},
-        {rarity_plebeian: [25, 1, 1]},
-        {"crop": [40, 2, 6]},
+        {rarity_plebeian: [6, 1, 1]},
         {"poncho": [10, 1, 1]}
     ],
     enemy_type_raiderunderboss: [
         {item_id_slimepoudrin: [100, 3, 8]},
-        {rarity_plebeian: [40, 1, 2]},
-        {"crop": [60, 2, 6]},
+        {rarity_plebeian: [10, 1, 2]},
         {"poncho": [25, 1, 1]},
         {"trenchcoat": [25, 1, 1]},
     ],
     enemy_type_protester: [
         {item_id_slimepoudrin: [100, 1, 1]},
-        {rarity_plebeian: [25, 1, 1]},
-        {"crop": [20, 1, 3]},
+        {rarity_plebeian: [6, 1, 1]},
         {item_id_civilianscalp: [100, 1, 1]},
         {weapon_id_bat: [10, 1, 1]},
         {weapon_id_molotov: [10, 1, 1]},
@@ -4558,8 +4552,7 @@ enemy_drop_tables = {
     ],
     enemy_type_antiprotestprotester: [
         {item_id_slimepoudrin: [100, 1, 2]},
-        {rarity_plebeian: [30, 1, 2]},
-        {"crop": [30, 1, 4]},
+        {rarity_plebeian: [7, 1, 2]},
         {item_id_civilianscalp: [100, 1, 1]},
         {weapon_id_rifle: [10, 1, 1]},
         {"slimecityflag": [10, 1, 1]},
@@ -4568,8 +4561,7 @@ enemy_drop_tables = {
     ],
     enemy_type_deathclaw: [
         {item_id_slimepoudrin: [100, 3, 7]},
-        {rarity_patrician: [15, 1, 2]},
-        {"crop": [60, 2, 4]},
+        {rarity_patrician: [4, 1, 2]},
         {item_id_leather: [100, 1, 2]},
         {item_id_dragonsoul: [12, 1, 1]},
         {item_id_monsterbones: [100, 2, 8]}
@@ -4597,7 +4589,7 @@ enemy_drop_tables = {
     ],
     enemy_type_mammoslimebull: [
         {item_id_slimepoudrin: [75, 6, 8]},
-        {rarity_patrician: [20, 1, 1]},
+        {rarity_patrician: [5, 1, 1]},
         {item_id_monsterbones: [100, 2, 4]},
     ],
     enemy_type_piloslime: [
@@ -4631,7 +4623,6 @@ enemy_drop_tables = {
     enemy_type_slimernaliajuvie: [
         {item_id_slimepoudrin: [100, 1, 15]},
         {item_id_giftribbon: [80, 1, 6]},
-        {"crop": [30, 1, 3]},
         {item_id_candycane: [100, 1, 10]},
     ],
     enemy_type_slimeoidabuser: [

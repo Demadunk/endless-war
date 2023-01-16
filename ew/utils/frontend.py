@@ -734,7 +734,7 @@ async def get_member(guild, member_id):
     return member
 
 
-async def talk_bubble(response = "", name = "", image = None, channel = None, color = "", npc_obj = None):
+async def talk_bubble(response = "", name = "", image = None, channel = None, color = "", npc_obj = None, delete_after = None):
     bubble = discord.Embed()
     client = ewutils.get_client()
     if name != "" and channel is not None:
@@ -754,7 +754,7 @@ async def talk_bubble(response = "", name = "", image = None, channel = None, co
         else:
             bubble.color = discord.Colour(int("33cc4a", 16))
         bubble.add_field(name='\u200b', value=response)
-        await send_message(client, channel, embed=bubble)
+        await send_message(client, channel, embed=bubble, delete_after=delete_after)
 
 
 async def prompt(cmd = None, target = None, question = "", wait_time = 30, accept_command = 'accept', decline_command = 'refuse', checktarget = False):

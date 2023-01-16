@@ -45,7 +45,7 @@ mines_map = {
 
 scavenge_combos = {}
 scavenge_captchas = {}
-
+scavenge_locations = {}
 
 class EwMineGrid:
     grid_type = ""

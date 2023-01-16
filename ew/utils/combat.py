@@ -493,7 +493,8 @@ class EwEnemy(EwEnemyBase):
                                     name_target=("<@!{}>".format(target_data.id_user)),
                                     hitzone=randombodypart,
                                     strikes=strikes,
-                                    civ_weapon=random.choice(ewcfg.makeshift_weapons)
+                                    civ_weapon=random.choice(ewcfg.makeshift_weapons),
+                                    dojo_weapons=random.choice(ewcfg.dojo_weapons)
                                 )
                                 if crit:
                                     response += " {}".format(used_attacktype.str_crit.format(
@@ -2202,8 +2203,6 @@ class EwUser(EwUserBase):
             if result is None:
                 result = 0
 
-        # random.seed(self.rand_seed + mutation_dat)
-
         except:
             ewutils.logMsg("Failed to get mutation level for user {}.".format(self.id_user))
 
@@ -2245,10 +2244,10 @@ class EwUser(EwUserBase):
             if counter == None:
                 counter = 0
             # The next possible mutations will be the same each level-up until a new mutation is given
-            random.seed(counter + seed)
+            mutation_random_class = random.Random(counter + seed)
 
             for x in range(1000):
-                result = random.choice(list(static_mutations.mutation_ids))
+                result = mutation_random_class.choice(list(static_mutations.mutation_ids))
                 result_mutation = static_mutations.mutations_map[result]
                 incompatible = False
 

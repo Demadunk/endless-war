@@ -143,7 +143,7 @@ async def revive(cmd, player_auto = None):
                 district_data = EwDistrict(district=poi, id_server=cmd.guild.id)
 
                 district_data.change_slimes(n=geyser_amount)
-                sewer_data.change_slimes(n=-1 * geyser_amount)
+                sewer_data.change_slimes(n=-2 * geyser_amount)
 
                 district_data.persist()
                 sewer_data.persist()

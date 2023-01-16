@@ -53,7 +53,7 @@ async def chatty_npc_action(keyword = '', enemy = None, channel = None, item = N
     npc_obj = static_npc.active_npcs_map.get(enemy.enemyclass)
 
     if keyword == 'act':
-        if random.randint(1, 5) == 2:
+        if random.randint(1, 20) == 2:
             return await generic_talk(channel=channel, npc_obj=npc_obj, keyword_override='loop', enemy = enemy, user_data=user_data)
     elif keyword == 'talk':
         return await generic_talk(channel=channel, npc_obj=npc_obj, enemy = enemy, user_data=user_data)
@@ -67,6 +67,8 @@ async def police_npc_action(keyword = '', enemy = None, channel = None, item = N
         return await conditional_act(channel=channel, npc_obj=npc_obj, enemy=enemy)
     elif keyword == 'die':
         return await police_die(channel=channel, npc_obj=npc_obj, keyword_override='die', enemy = enemy)
+    elif keyword == 'move':
+        return await generic_move(enemy=enemy, npc_obj=npc_obj, move_override=30)
     else:
         return await generic_npc_action(keyword=keyword, enemy=enemy, channel=channel, item=item)
 
@@ -137,6 +139,8 @@ async def slox_action(keyword = '', enemy = None, channel = None, item = None, u
         return await warpath_die(channel=channel, npc_obj=npc_obj, enemy=enemy)
     elif keyword == 'give':
         return await feeder_give(enemy=enemy, channel=channel, item=item, npc_obj=npc_obj)
+    elif keyword == 'move':
+        pass
     else:
         return await generic_npc_action(keyword=keyword, enemy=enemy, channel=channel, item=item)
 
@@ -181,7 +185,9 @@ async def drinkster_npc_action(keyword = '', enemy = None, channel = None, item 
 
 
 async def generic_talk(channel, npc_obj, keyword_override = 'talk', enemy = None, user_data = None): #sends npc dialogue, including context specific and rare variants
-
+    delete_after = None
+    if 'loop' in keyword_override:
+        delete_after = 30
     if ewutils.is_district_empty(poi=enemy.poi):
         return
 
@@ -210,14 +216,14 @@ async def generic_talk(channel, npc_obj, keyword_override = 'talk', enemy = None
             return await fe_utils.send_message(None, channel, response)
 
         name = "{}{}{}".format('**__', npc_obj.str_name.upper(), '__**')
-        return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel)
+        return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel, delete_after=delete_after)
 
 
 
 
-async def generic_move(enemy = None, npc_obj = None): #moves within boundaries every 20 seconds or so
+async def generic_move(enemy = None, npc_obj = None, move_override = 120): #moves within boundaries every 20 seconds or so
     if enemy.life_state == ewcfg.enemy_lifestate_alive:
-        if random.randrange(20) == 0:
+        if random.randrange(move_override) == 0:
             resp_cont = enemy.move()
             if resp_cont != None:
                 if len(resp_cont.channel_responses) > 0:
@@ -242,14 +248,12 @@ async def generic_act(channel, npc_obj, enemy): #attacks when hostile. otherwise
         if resp_cont is not None:
             await resp_cont.post()
 
-    elif random.randrange(25) == 0 and not ewutils.is_district_empty(poi=enemy.poi):
-        resp_set = npc_obj.dialogue.get('loop')
-        if resp_set is None:
-            resp_set = npc_obj.dialogue.get('talk')
-        if resp_set is not None:
-            response = random.choice(resp_set)
-            name = "{}{}{}".format("**__", npc_obj.str_name.upper(), '__**')
-            return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel)
+    elif random.randrange(35) == 0 and not ewutils.is_district_empty(poi=enemy.poi):
+        if npc_obj.dialogue.get('loop') is not None:
+            return await generic_talk(channel=channel, npc_obj=npc_obj, enemy=enemy, keyword_override='loop')
+        elif npc_obj.dialogue.get('talk') is not None:
+            return await generic_talk(channel=channel, npc_obj=npc_obj, enemy=enemy, keyword_override='talk')
+
 
 
 
@@ -273,7 +277,7 @@ async def generic_give(channel, npc_obj, enemy, item):
 
     response = "?"
     if npc_obj.dialogue.get('give') is not None:
-        response = random.choice(npc_obj.dialogue.get('give'))
+        return await generic_talk(channel=channel, npc_obj=npc_obj, keyword_override='give', enemy=enemy)
 
     name = "{}{}{}".format('**__', npc_obj.str_name.upper(), '__**')
     return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel)
@@ -285,16 +289,13 @@ async def conditional_act(channel, npc_obj, enemy): #attacks when hostile. other
 
     if random.randrange(25) == 0 and not ewutils.is_district_empty(poi=enemy.poi): #one in 25 chance to talk in addition to attacking. attacks are based on a condition
         if npc_obj.dialogue.get('loop') is not None:
-            response = random.choice(npc_obj.dialogue.get('loop'))
+            return await generic_talk(channel=channel, npc_obj=npc_obj, keyword_override='loop', enemy=enemy)
         elif npc_obj.dialogue.get('talk') is not None:
-            response = random.choice(npc_obj.dialogue.get('talk'))
+            return await generic_talk(channel=channel, npc_obj=npc_obj, keyword_override='talk', enemy=enemy)
         else:
             response = "..."
-
-        name = "{}{}{}".format('**__', npc_obj.str_name.upper(), '__**')
-
-        if response is not None:
-            return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel)
+            name = "{}{}{}".format('**__', npc_obj.str_name.upper(), '__**')
+            return await fe_utils.talk_bubble(response=response, name=name, image=npc_obj.image_profile, channel=channel, delete_after=30)
 
     poi = poi_static.id_to_poi.get(enemy.poi)
     resp_cont = None
@@ -366,8 +367,8 @@ def drop_held_items(enemy):
 
     for item in items_list:
         items_to_drop.append(item.get('id_item'))
-
-    bknd_item.give_item_multi(id_list=items_to_drop, destination=enemy.poi)
+    if len(items_to_drop) > 0:
+        bknd_item.give_item_multi(id_list=items_to_drop, destination=enemy.poi)
 
 
 async def juvieman_die(channel, npc_obj, enemy = None):
@@ -475,7 +476,7 @@ async def mozz_give(channel, npc_obj, enemy, item):
         await attack_talk(channel, npc_obj, enemy, territorial = True)
 
 async def mozz_move(channel, npc_obj, enemy):
-    if random.randrange(20) == 0 or ewutils.DEBUG_OPTIONS.get('alternate_talk') == True:
+    if random.randrange(30) == 0 or ewutils.DEBUG_OPTIONS.get('alternate_talk') == True:
         resp_cont = enemy.move()
         await resp_cont.post()
         if resp_cont != None:
@@ -545,6 +546,7 @@ async def dojomaster_hit(channel, npc_obj, enemy, territorial = True, probabilit
             await generic_talk(channel=channel, npc_obj=npc_obj, keyword_override='hit', enemy=enemy)
 
     if user_data.weapon != -1:
+        user_data = ewcombat.EwUser(id_user=user_data.id_user, id_server=user_data.id_server)
         weapon_item = EwItem(id_item=user_data.weapon)
         itemtype = weapon_item.template
         user_data.add_weaponskill(n=1, weapon_type = itemtype)
@@ -578,12 +580,12 @@ async def needy_give(channel, npc_obj, enemy, item):
 async def needy_move(enemy = None, npc_obj = None):
     if enemy.life_state == ewcfg.enemy_lifestate_alive:
         pre_chosen_poi = None
-        move_probability = 20
+        move_probability = 120
         status = enemy.getStatusEffects()  # if the follower has a target they'll pester them constantly
         if ewcfg.status_enemy_following_id in status:
             status_obj = EwEnemyStatusEffect(enemy_data=enemy, id_status=ewcfg.status_enemy_following_id)
             user_data = util_combat.EwUser(id_server=enemy.id_server, id_user=status_obj.id_target)
-            if user_data.poi not in[ewcfg.poi_id_rowdyroughhouse, ewcfg.poi_id_copkilltown] and user_data.poi[:3] != 'apt' and user_data.poi != enemy.poi:
+            if user_data.poi not in[ewcfg.poi_id_rowdyroughhouse, ewcfg.poi_id_copkilltown, ewcfg.poi_id_juviesrow, ewcfg.poi_id_thesewers] and user_data.poi[:3] != 'apt' and user_data.poi != enemy.poi:
                 pre_chosen_poi = user_data.poi
                 move_probability = 1
             else:
