@@ -1250,8 +1250,6 @@ cmd_shutdownbot = cmd_prefix + 'shutdownbot'
 cmd_checkbot = cmd_prefix + 'checkbot'
 cmd_set_debug_option = cmd_prefix + 'debugoption'
 
-cmd_award_skill_capes = cmd_prefix + 'awardskillcapes'
-
 cmd_reroll_mutation = cmd_prefix + 'rerollmutation'
 cmd_clear_mutations = cmd_prefix + 'sterilizemutations'
 
