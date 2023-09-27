@@ -92,6 +92,12 @@ status_effect_list = [
         str_describe_self="You are gassed up on paint thinner."
     ),
     EwStatusEffectDef(
+        id_status=ewcfg.status_huffed_id,
+        time_expire=ewcfg.time_expire_poserhigh,
+        str_describe="They have huffed spraypaint.",
+        str_describe_self="You have huffed spraypaint."
+    ),
+    EwStatusEffectDef(
         id_status=ewcfg.status_evasive_id,
         time_expire=10,
         str_describe="They have assumed an evasive stance.",

@@ -3925,6 +3925,7 @@ status_sapfatigue_id = "sapfatigue"
 status_rerollfatigue_id = "rerollfatigue"
 status_high_id = "high"
 status_thinned_id = "thinned"
+status_huffed_id = "huffed"
 status_modelovaccine_id = "modelovaccine"
 status_slapped_id = "slapped"
 status_foodcoma_id = "foodcoma"
@@ -3964,6 +3965,7 @@ status_dueling = "dueling"
 
 time_expire_burn = 12
 time_expire_high = 30 * 60  # 30 minutes
+time_expire_poserhigh = 3 * 60  # 3 minutes
 
 time_expire_repel_base = 60 * 60 * 3  # 3 hours
 
