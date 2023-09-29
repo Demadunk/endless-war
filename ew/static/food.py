@@ -1961,17 +1961,6 @@ food_list = [
         acquisition = ewcfg.acquisition_trickortreating,
     ),
     EwFood(
-        id_food = "macmerons",
-        alias = ['mac-merons'],
-        recover_hunger = 250,
-        price = 100000,
-        str_name = "Mac-Merons",
-        str_eat = "You bite into the dessert, that crisp texture is unmistakable. It's honeydew flavored with a weird herby aftertaste. Heh, whoa dude your hands are huuuge.",
-        str_desc = "A carefully crafted confection of ganache between two delicate almond cookies with a ruffled crown rim, colored light green. Surely made by a veteran patissier",
-        time_expir = 43200,
-        acquisition = ewcfg.acquisition_trickortreating,
-    ),
-    EwFood(
         id_food = "sourpussbread",
         alias = ['bowserbread', 'spb', 'sourpuss'],
         recover_hunger = 100,
