@@ -16,7 +16,7 @@ cmd_map = {
 
 dm_cmd_map = {
 
-    # !tweet
-    ewcfg.cmd_tweet: slimetwittercmds.tweet,
-
+    # !tweet 
+    # ewcfg.cmd_tweet: slimetwittercmds.tweet,
+    # Removed due to bypassing things such as bans, kicks, and mutes.
 }
