@@ -4637,6 +4637,8 @@ enemy_drop_tables = {
     ],
     enemy_type_desertraider: [
         {item_id_slimepoudrin: [100, 1, 2]},
+        {"stripedraidermask": [5, 1, 1]},
+        {"shelledraidermask": [5, 1, 1]},
         {rarity_plebeian: [12, 1, 1]},
         {weapon_id_awp: [1, 1, 1]}
     ],
@@ -4712,6 +4714,7 @@ enemy_drop_tables = {
         {rarity_plebeian: [10, 1, 2]},
         {"poncho": [25, 1, 1]},
         {"trenchcoat": [25, 1, 1]},
+        {"kilmisterhat": [25, 1, 1]},
     ],
     enemy_type_protester: [
         {item_id_slimepoudrin: [100, 1, 1]},

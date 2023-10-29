@@ -2594,6 +2594,33 @@ EwCosmeticItem(
         style = "cute",
         freshness = 3
     ),
+    EwCosmeticItem(
+        id_cosmetic = "kilmisterhat",
+        str_name = "Kilmister Hat",
+        str_desc = "A hat that screams of pure toughness, a modified cowboy hat with a strap that comes without any folded up edges. The strap has many spades present.",
+        rarity = "patrician",
+        durability = 250000,
+        style = "tough",
+        freshness = 6
+    ),
+    EwCosmeticItem(
+        id_cosmetic = "stripedraidermask",
+        str_name = "Striped Raider Mask",
+        str_desc = "It's a rare ornate mask of tribal origins. It's made of some metallic material and wooden stripes built into the headgear itself. The stripes seems to be aiming right into the nose with the top of the mask having stripes going all over the place. What a steal!",
+        rarity = "patrician",
+        durability = 250000,
+        style = "beautiful",
+        freshness = 6
+    ),
+    EwCosmeticItem(
+        id_cosmetic = "shelledraidermask",
+        str_name = "Shelled Raider Mask",
+        str_desc = "It's some sort of rare tribal mask. It's made out of various seeds built into the headgear and some patterns are found leading from the nose into the mouthpiece. Even has some leather like flabs on the sides.",
+        rarity = "patrician",
+        durability = 250000,
+        style = "beautiful",
+        freshness = 6
+    ),
 ]
 
 
