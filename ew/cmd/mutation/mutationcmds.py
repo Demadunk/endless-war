@@ -390,7 +390,6 @@ async def bleedout(cmd):
 async def piss(cmd):
     user_data = EwUser(member=cmd.message.author)
     mutations = user_data.get_mutations()
-    xp_yield = 0
     respctn = EwResponseContainer(client=cmd.client, id_server=cmd.guild.id)
 
     if ewcfg.mutation_id_enlargedbladder in mutations:
@@ -412,7 +411,6 @@ async def piss(cmd):
             
         elif cmd.mentions_count == 0:
             response = "You unzip your dick and just start pissing all over the goddamn fucking floor. God, you’ve waited so long for this moment, and it’s just as perfect as you could have possibly imagined. You love pissing so much."
-            xp_yield = 1
             if random.randint(1, 100) < 2:
                 slimeoid = EwSlimeoid(member=cmd.message.author)
                 if slimeoid.life_state == ewcfg.slimeoid_state_active:
@@ -420,7 +418,6 @@ async def piss(cmd):
                     response = "CONGRATULATIONS. You suddenly lose control of your HUGE COCK and saturate your {} with your PISS. {}".format(slimeoid.name, hue.str_saturate)
                     slimeoid.hue = (hue_static.hue_map.get("yellow")).id_hue
                     slimeoid.persist()
-                    xp_yield = 100
 
         elif cmd.mentions_count == 1:
             target_member = cmd.mentions[0]
@@ -428,10 +425,8 @@ async def piss(cmd):
 
             if user_data.id_user == target_user_data.id_user:
                 response = "Your love for piss knows no bounds. You aim your urine stream sky high, causing it to land right back into your own mouth. Mmmm, tasty~!"
-                xp_yield = 1
 
             elif user_data.poi == target_user_data.poi:
-                xp_yield = 2
                 if target_user_data.life_state == ewcfg.life_state_corpse:
                     response = "You piss right through them! Their ghostly form ripples as the stream of urine pours endlessly unto them."
                 else:
@@ -448,7 +443,6 @@ async def piss(cmd):
                 if time_lastuse + 60 * 60 > time_now:
                     response = "You can't do that again yet. Try again in about {} minute(s)".format(math.ceil((time_lastuse + 60 * 60 - time_now) / 60))
                 else:
-                    xp_yield = 50
                     mutation_data.data = str(time_now)
                     mutation_data.persist()
                     response = "The space directly above {}'s head prolapses into a shower of piss. Slurp's up!".format(target_member.display_name)
@@ -462,7 +456,6 @@ async def piss(cmd):
 
     elif user_data.life_state == ewcfg.life_state_corpse:
         if cmd.mentions_count == 0:
-            xp_yield = -1 #a crime. a crime, i tell you
             response = "You grow a ghost dick, unzip it, and just start ghost pissing all over the goddamn fucking floor. God, you’ve waited so long for this moment, and it’s just as perfect as you could have possibly imagined. You love ghost pissing so much."
             if random.randint(1, 100) < 3:
                 response = "You grow a gussy, unzip it, and just start ghost pissing all over the goddamn fucking floor. God, you've waited so long for this moment, and it's just as perfect as you could have possibly imagined. You love ghost pissing so much."
@@ -472,11 +465,9 @@ async def piss(cmd):
             target_user_data = EwUser(member=target_member)
 
             if user_data.id_user == target_user_data.id_user:
-                xp_yield = -1
                 response = "Your love for negapiss knows no bounds. You aim your antiurine stream sky high, causing it to land right back into your own ghastly mouth. Mmmm, tasty~!"
 
             elif user_data.poi == target_user_data.poi:
-                xp_yield = -1
                 if target_user_data.life_state == ewcfg.life_state_corpse:
                     response = "You ghost piss HARD and FAST right onto {}!!".format(target_member.display_name)
 
@@ -489,7 +480,6 @@ async def piss(cmd):
             response = "Whoa, one necrophiliac at a time, pal!"
 
     else:
-        xp_yield = -1 #FOOL. A DAMN FOOL.
         response = "You lack the moral fiber necessary for urination."
 
     respctn.add_channel_response(cmd.message.channel, fe_utils.formatMessage(cmd.message.author, response))

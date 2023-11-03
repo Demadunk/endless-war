@@ -3,13 +3,13 @@ import random
 # Global configuration options.
 
 
-version = "v4.22 SEASON 4 ACT 2 - Mutation Rotations"
+version = "v1A Swilldermuk"
 
 
 
 dir_msgqueue = 'msgqueue'
 
-database = "rfck"
+database = "roughhousing"
 
 discord_message_length_limit = 2000
 
@@ -36,7 +36,7 @@ dh_stage = 0
 slimernalia_active = False
 
 #Swilldermuk Features
-swilldermuk_active = False
+swilldermuk_active = True
 
 #Event stages. Import them to the file you want by doing from ew.static.cfg import event_stage, then reference it with ewcfg.event_stage. Go wild.
 event_stage = 0
@@ -1464,6 +1464,7 @@ client_debug_commands =[
  '!createpoudrin',
  '!damage',
  '!getslime',
+ '!getcredence',
  '!getcoin',
  '!clearinv',
  '!createapple',
@@ -3343,8 +3344,8 @@ goonscape_mine_stat = "mining"
 goonscape_fish_stat = "fishing"
 goonscape_farm_stat = "farming"
 goonscape_eat_stat = "feasting"
-goonscape_clout_stat = "clout"
-goonscape_pee_stat = "piss"
+goonscape_thrash_stat = "thrashing"
+goonscape_prank_stat = "pranking"
 # Double Halloween 2022 Exclusive
 goonscape_halloweening_stat = "halloween"
 
@@ -3357,10 +3358,10 @@ col_id_farming_level = goonscape_farm_stat + "_level"
 col_id_farming_xp = goonscape_farm_stat + "_xp"
 col_id_feasting_level = goonscape_eat_stat + "_level"
 col_id_feasting_xp = goonscape_eat_stat + "_xp"
-col_id_clout_level = goonscape_clout_stat + "_level"
-col_id_clout_xp = goonscape_clout_stat + "_xp"
-col_id_peeing_level = goonscape_pee_stat + "_level"
-col_id_peeing_xp = goonscape_pee_stat + "_xp"
+col_id_clout_level = goonscape_thrash_stat + "_level"
+col_id_clout_xp = goonscape_thrash_stat + "_xp"
+col_id_peeing_level = goonscape_prank_stat + "_level"
+col_id_peeing_xp = goonscape_prank_stat + "_xp"
 # Double Halloween 2022
 col_id_halloweening_level = goonscape_halloweening_stat + "_level"
 col_id_halloweening_xp = goonscape_halloweening_stat + "_xp"
@@ -3371,34 +3372,34 @@ gs_stat_to_level_col = {
     goonscape_fish_stat: col_id_fishing_level,
     goonscape_farm_stat: col_id_farming_level,
     goonscape_eat_stat: col_id_feasting_level,
-    goonscape_clout_stat: col_id_clout_level,
+    goonscape_thrash_stat: col_id_clout_level,
+    goonscape_prank_stat: col_id_peeing_level,
     goonscape_halloweening_stat: col_id_halloweening_level,
-    goonscape_pee_stat: col_id_peeing_level,
 }
 gs_stat_to_xp_col = {
     goonscape_mine_stat: col_id_mining_xp,
     goonscape_fish_stat: col_id_fishing_xp,
     goonscape_farm_stat: col_id_farming_xp,
     goonscape_eat_stat: col_id_feasting_xp,
-    goonscape_clout_stat: col_id_clout_xp,
+    goonscape_thrash_stat: col_id_clout_xp,
+    goonscape_prank_stat: col_id_peeing_xp,
     goonscape_halloweening_stat: col_id_halloweening_xp,
-    goonscape_pee_stat: col_id_peeing_xp,
 }
 
 minecraft_parodies = ["WE'LL MINE AGAIN", "I BANNED YOU", "MINE ODDITY", "WHAT ABOUT FRIENDS", "JUST GIVE ME MY DIAMONDS", "STOP CHEATING", "DIAMONDS", "WELCOME TO MY MINE", "ALL THE OTHER PLAYERS", "MINE DIAMONDS", "DIAMOND MINE", "MINER", "50 WAYS TO DIE IN MINECRAFT", "MINE ON", "MINECRAFT STEVE", "MINE ODDITY", "BREAK MY MINE", "TNT", "HARDCORE", "DIAMOND ORES", "GONNA GET MY DIAMONDS BACK", "MINING IN SEPTEMBER", "GRIEFING IT ALL", "IN THE MINE AGAIN", "I MINE DIAMONDS NOT COAL", "MINESHAFT OF BROKEN PICKS", "DIAMOND WALL", "MINING OUT", "CAZE SIZE DIAMONDS", "THIS IS MINECRAFT", "I MINED IT"]
 
 gs_stat_to_cape_description = {
-    goonscape_mine_stat: "Mining: A cape earned by {user_id} for maxing out the mining stat. Soot and dirt trails along it's ornate patterns, physical evidence of the hours spent toiling for poudrins and XP. Cape Number #{placement}",
-    goonscape_fish_stat: "A cape earned by {user_id} for maxing out the fishing stat. It makes for handy shade when spending hours at the pier, and glimmers like the scales of the fish caught and traded in to obtain it. Cape Number #{placement}",
-    goonscape_farm_stat: "A cape earned by {user_id} for maxing out the farming stat. It comes built-in with several pouches for holding seeds and crops, and is hemmed with beautiful juvie green. Cape Number #{placement}",
-    goonscape_eat_stat: " A cape earned by {user_id} for maxing out the feasting stat. The stains prove it's seen its fair usage as a bib as well as a cape. We can't believe {user_id} ate the whole thing. Cape Number #{placement}",
-    goonscape_clout_stat: "A cape earned by {user_id} for maxing out the clout stat. It's like a diamond play button but even more worthless! Cape Number #{placement}",
-    goonscape_halloweening_stat: "A cape earned by {user_id} for maxing out the halloween stat, obtainable during Double Halloween 2022. It shimmers purple with fabric made of double halloween grist, haunted by the hours wasted grinding this stat out. Cape Number #{placement}",
-    goonscape_pee_stat: "A cape earned by {user_id} for pissing to the extreme. The cape hangs heavy with a brutal yellow hue, raditating power. And also pee. Cape Number #{placement}",
+    goonscape_mine_stat: "Mining: A cape earned by <@{user_id}> for maxing out the mining stat. Soot and dirt trails along it's ornate patterns, physical evidence of the hours spent toiling for poudrins and XP. Cape Number #{placement}",
+    goonscape_fish_stat: "A cape earned by <@{user_id}> for maxing out the fishing stat. It makes for handy shade when spending hours at the pier, and glimmers like the scales of the fish caught and traded in to obtain it. Cape Number #{placement}",
+    goonscape_farm_stat: "A cape earned by <@{user_id}> for maxing out the farming stat. It comes built-in with several pouches for holding seeds and crops, and is hemmed with beautiful juvie green. Cape Number #{placement}",
+    goonscape_eat_stat: " A cape earned by <@{user_id}> for maxing out the feasting stat. The stains prove it's seen its fair usage as a bib as well as a cape. We can't believe <@{user_id}> ate the whole thing. Cape Number #{placement}",
+    goonscape_thrash_stat: "A cape earned by <@{user_id}> for. Cape Number #{placement}",
+    goonscape_prank_stat: "A cape earned by <@{user_id}> for. Cape Number #{placement}",
+    goonscape_halloweening_stat: "A cape earned by <@{user_id}> for maxing out the halloween stat, obtainable only during Double Halloweens. It shimmers purple with fabric made of double halloween grist, haunted by the hours wasted grinding this stat out. Cape Number #{placement}",
 }
 
 legacy_stat_dict = {
-    goonscape_halloweening_stat: "Was obtainable during Double Halloween 2022.",
+    goonscape_halloweening_stat: "Only obtainable during Double Halloween.",
 }
 
 #GoonScape Stat

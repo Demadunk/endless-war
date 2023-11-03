@@ -23,46 +23,26 @@ async def gambit(cmd):
 
 
 async def credence(cmd):
-    if not cmd.message.author.server_permissions.administrator:
-        adminmode = False
-    else:
-        adminmode = True
-
     if cmd.mentions_count == 0:
         credence = ewstats.get_stat(id_server=cmd.guild.id, id_user=cmd.message.author.id, metric=ewcfg.stat_credence)
         credence_used = ewstats.get_stat(id_server=cmd.guild.id, id_user=cmd.message.author.id, metric=ewcfg.stat_credence_used)
-        if adminmode:
-            response = "DEBUG: You currently have {:,} credence, and {:,} credence used.".format(credence, credence_used)
+            
+        if credence > 0:
+            response = "You have {:,} credence and {:,} credence used. Don't fuck this up.".format(credence, credence_used)
         else:
-            if credence > 0:
-                response = "You have credence. Don't fuck this up."
-            else:
-                response = "You don't have any credence. You'll need to build some up in the city before you can get to pranking again."
+            response = "You don't have any credence. You'll need to build some up in the city before you can get to pranking again."
 
     else:
         member = cmd.mentions[0]
         credence = ewstats.get_stat(id_server=cmd.guild.id, id_user=member.id, metric=ewcfg.stat_credence)
         credence_used = ewstats.get_stat(id_server=cmd.guild.id, id_user=member.id, metric=ewcfg.stat_credence_used)
-        if adminmode:
-            response = "{} currently has {:,} credence, and {:,} credence used.".format(member.display_name, credence, credence_used)
+
+        if credence > 0:
+            response = "They have {:,} credence and {:,} credence used. Time for a little anarchy.".format(credence, credence_used)
         else:
-            if credence > 0:
-                response = "They have credence. Time for a little anarchy."
-            else:
-                response = "They don't have any credence."
+            response = "They don't have any credence."
 
     # Send the response to the player.
-    await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
-
-
-async def get_credence(cmd):
-    if not cmd.message.author.server_permissions.administrator:
-        return
-
-    response = "DEBUG: You get 1,000 credence!"
-    ewstats.change_stat(id_server=cmd.guild.id, id_user=cmd.message.author.id, metric = ewcfg.stat_credence, n=1000)
-    ewstats.set_stat(id_server=cmd.guild.id, id_user=cmd.message.author.id, metric=ewcfg.stat_credence_used, value=0)
-
     await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
 

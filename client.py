@@ -567,6 +567,12 @@ async def debugHandling(message, cmd, cmd_obj):
 
         user_data.persist()
         await fe_utils.send_message(client, message.channel, fe_utils.formatMessage(message.author, response))
+    elif cmd == (ewcfg.cmd_prefx + 'getcredence'):
+        
+        response = "You get 1,000 credence!"
+        user_data.change_stat(id_server=cmd.guild.id, id_user=cmd.message.author.id, metric = ewcfg.stat_credence, n=1000)
+
+        await fe_utils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
     elif cmd == (ewcfg.cmd_prefix + 'getcoin'):
         user_data = EwUser(member=message.author)
         user_data.change_slimecoin(n=1000000000000, coinsource=ewcfg.coinsource_spending)

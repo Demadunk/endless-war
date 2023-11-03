@@ -1003,7 +1003,7 @@ async def spawn_prank_items(id_server):
                 item_props=item_props
             )
 
-            # print('{} with id {} spawned in {}!'.format(prank_item.str_name, prank_item_id, district_id))
+            print('{} with id {} spawned in {}!'.format(prank_item.str_name, prank_item_id, district_id))
 
             response = "An ominous wind blows through the streets. You think you hear someone drop a {} on the ground nearby...".format(prank_item.str_name)
             await fe_utils.send_message(client, district_channel, response)

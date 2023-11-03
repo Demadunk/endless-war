@@ -50,6 +50,7 @@ from ew.utils.cmd import EwCmd
 from ew.utils.district import EwDistrict
 from ew.utils.frontend import EwResponseContainer
 from ew.utils.slimeoid import EwSlimeoid
+from ew.utils.user import add_xp
 from .cmdsutils import gen_score_text
 from .cmdsutils import get_user_shares_str
 from .cmdsutils import item_commands
@@ -622,16 +623,19 @@ async def dab(cmd):
 
 async def thrash(cmd):
     user_data = EwUser(member=cmd.message.author)
-
+    xp_yield = 0
+    respctn = EwResponseContainer(client=cmd.client, id_server=cmd.guild.id)
     if (user_data.life_state == ewcfg.life_state_enlisted or user_data.life_state == ewcfg.life_state_kingpin) and user_data.faction == ewcfg.faction_rowdys:
         response = '\n' + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_slime1 + ewcfg.emote_slime3 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_slime1 + ewcfg.emote_slime3 + ewcfg.emote_slime1 + ewcfg.emote_rf + '\n' + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + '\n' + "{emote}" + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_slime1 + ewcfg.emote_slime3 + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_slime1 + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + "{emote}" + '\n' + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime3 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + '\n' + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_blank + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_slime1 + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf + ewcfg.emote_rf
         final_response = response.format(emote=random.choice(ewcfg.thrash_emotes))
+        xp_yield = 5
         
     #Other factions being dumb	
     elif (user_data.life_state == ewcfg.life_state_enlisted or user_data.life_state == ewcfg.life_state_kingpin) and user_data.faction == ewcfg.faction_killers:
-        final_response = "EXCUSE ME <@177731019322032128> WE GOT A TRAITOR HERE" # Yeah it @s Ben Saint lol
+        final_response = "KILLERS AREN'T REAL" # Yeah it @s Ben Saint lol
     else:
-        final_response = "You're too much of a coward to !thrash, dumbass."
+        final_response = "You're too much of a coward to !thrash, fuckhead."
+
 
     await fe_utils.send_response(final_response, cmd, format_ats=False)
 
@@ -3573,14 +3577,14 @@ async def display_goonscape_stats(cmd):
 
     # List all normal stats
     if normal:
-        for stat_name in [ewcfg.goonscape_mine_stat, ewcfg.goonscape_farm_stat, ewcfg.goonscape_fish_stat, ewcfg.goonscape_eat_stat, ewcfg.goonscape_clout_stat]:
+        for stat_name in [ewcfg.goonscape_mine_stat, ewcfg.goonscape_farm_stat, ewcfg.goonscape_fish_stat, ewcfg.goonscape_eat_stat, ewcfg.goonscape_thrash_stat,  ewcfg.goonscape_prank_stat]:
 
             stat = EwGoonScapeStat(target_id, cmd.guild.id, stat_name)
 
             response += "{stat:>10}] {level:>2}/{level:>2} ;{xp} xp\n".format(stat= "[" + stat.stat.capitalize(), level= stat.level , xp=stat.xp)
     # List hidden stats
     if hidden:
-        for stat_name in [ewcfg.goonscape_halloweening_stat, ewcfg.goonscape_pee_stat]:
+        for stat_name in [ewcfg.goonscape_halloweening_stat]:
 
             stat = EwGoonScapeStat(target_id, cmd.guild.id, stat_name)
 
