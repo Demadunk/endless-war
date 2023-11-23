@@ -447,10 +447,6 @@ async def knock(cmd = None):
 async def trickortreat(cmd = None):
     user_data = EwUser(member=cmd.message.author)
 
-    if ewcfg.dh_stage < 10:
-        response = "Looks like it's not quite time for treating. Tricking is plenty fine, though."
-        return await fe_utils.send_message(cmd.client, cmd.message.channel, fe_utils.formatMessage(cmd.message.author, response))
-
     if cmd.message.guild is None or not ewutils.channel_name_is_poi(cmd.message.channel.name):
         response = "There will be neither trick nor treat found in these parts."
         return await fe_utils.send_message(cmd.client, cmd.message.channel, fe_utils.formatMessage(cmd.message.author, response))

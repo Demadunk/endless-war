@@ -3,7 +3,7 @@ import random
 # Global configuration options.
 
 
-version = "v4.22 SEASON 4 ACT 2 - Mutation Rotations"
+version = "v4.23 SEASON 4 ACT 2 - Double Slimernalia"
 
 
 
@@ -28,12 +28,12 @@ permissions_tries = 1
 territory_time_gain = 10
 
 #Double Halloween Features
-dh_active = False
+dh_active = True
 #Existing Stages for Double Halloween. As the years go by we may add on to this
 dh_stage = 0
 
 #Slimernalia Features
-slimernalia_active = False
+slimernalia_active = True
 
 #Swilldermuk Features
 swilldermuk_active = False
@@ -3398,7 +3398,7 @@ gs_stat_to_cape_description = {
 }
 
 legacy_stat_dict = {
-    goonscape_halloweening_stat: "Was obtainable during Double Halloween 2022.",
+    goonscape_halloweening_stat: "Obtainable only during Double Halloween.",
 }
 
 #GoonScape Stat
@@ -4566,11 +4566,11 @@ defense_up_enemies = [enemy_type_mutatedbarrel, enemy_type_alm]
 raid_den_bosses = [enemy_type_alm]
 
 if slimernalia_active == True:
-    common_enemies.extend[enemy_type_spiritofslimernaliapast, enemy_type_drugdealer]
-    uncommon_enemies.extend[enemy_type_vandal, enemy_type_illegalimmigrant, enemy_type_arsonist, enemy_type_drugdealer, enemy_type_slimeoidabuser]
-    raid_bosses.extend = [enemy_type_slimernaliajuvie, enemy_type_slimernaliagangster, enemy_type_miserablemiser]
-    enemy_movers.extend = [enemy_type_slimernaliajuvie, enemy_type_vandal, enemy_type_illegalimmigrant, enemy_type_arsonist, enemy_type_slimernaliagangster, enemy_type_slimeoidabuser, enemy_type_miserablemiser]
-    defense_up_enemies.extend = [enemy_type_miserablemiser]
+    common_enemies.extend([enemy_type_spiritofslimernaliapast, enemy_type_drugdealer])
+    uncommon_enemies.extend([enemy_type_vandal, enemy_type_illegalimmigrant, enemy_type_arsonist, enemy_type_drugdealer, enemy_type_slimeoidabuser])
+    raid_bosses.extend([enemy_type_slimernaliajuvie, enemy_type_slimernaliagangster, enemy_type_miserablemiser])
+    enemy_movers.extend([enemy_type_slimernaliajuvie, enemy_type_vandal, enemy_type_illegalimmigrant, enemy_type_arsonist, enemy_type_slimernaliagangster, enemy_type_slimeoidabuser, enemy_type_miserablemiser])
+    defense_up_enemies.extend([enemy_type_miserablemiser])
 # List of enemies that spawn in the Nuclear Beach
 pre_historic_enemies = [enemy_type_slimeasaurusrex, enemy_type_dinoslime, enemy_type_slimeadactyl, enemy_type_mammoslime]
 arctic_enemies = [enemy_type_desertraider, enemy_type_slimeasaurusrex, enemy_type_juvie, enemy_type_unnervingfightingoperator, enemy_type_grey, enemy_type_mammoslime, enemy_type_piloslime, enemy_type_greeneyesslimedragon, enemy_type_megaslime, enemy_type_dinoslime]
@@ -5115,7 +5115,7 @@ enemy_data_table = {
     },
     enemy_type_microgullswarm: {
         "slimerange": [100000, 100000],
-        "ai ": enemy_ai_attacker_a,
+        "ai": enemy_ai_attacker_a,
         "attacktype": enemy_attacktype_beak,
         "displayname": "Micro Gull Swarm",
         "raredisplayname": "Micro Gull Cloud",

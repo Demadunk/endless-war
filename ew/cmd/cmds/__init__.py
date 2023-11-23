@@ -230,9 +230,9 @@ if ewcfg.slimernalia_active:
     # Slimernalia -- Moved unwrap to item cmds. Please move wrap upon reimplementation
     cmd_map[ewcfg.cmd_festivity] = cmdcmds.festivity
     cmd_map[ewcfg.cmd_wrap] = cmdcmds.wrap
-    cmd_map[ewcfg.cmd_festivitystage] = cmdcmds.slimernaliastage
-    cmd_map[ewcfg.cmd_setfestivitystage] = cmdcmds.setslimernaliastage
-    cmd_map[ewcfg.cmd_announcefestivitystage] = cmdcmds.announceslimernaliastage
+    #cmd_map[ewcfg.cmd_festivitystage] = cmdcmds.slimernaliastage
+    #cmd_map[ewcfg.cmd_setfestivitystage] = cmdcmds.setslimernaliastage
+    #cmd_map[ewcfg.cmd_announcefestivitystage] = cmdcmds.announceslimernaliastage
 
 
 

@@ -2400,24 +2400,6 @@ EwSmeltingRecipe(
         },
         products=['edibleslime']
     ),
-]
-if ewcfg.dh_active:
-    smelting_recipe_list.append([ #Accepts only one addition, so if someone wants to add more: change append to extend.
-    EwSmeltingRecipe(
-        id_recipe = "ticket",
-        str_name = "Ticket to the White Line",
-        alias = [
-            "tickettohell",
-        ],
-        ingredients = {
-            ewcfg.item_id_doublehalloweengrist: 100,
-        },
-    products = ['ticket']
-    ),
-])
-
-if ewcfg.slimernalia_active:
-    smelting_recipe_list.extend([
     EwSmeltingRecipe(
         id_recipe = "wrappingpapersexywear",
         str_name = "Wrapping Paper Sexywear",
@@ -2461,7 +2443,7 @@ if ewcfg.slimernalia_active:
             "defectivecandycane",            
         ],
         ingredients = {
-            ewcfg.item_id_foodbase: 1,
+            ewcfg.item_id_foodbase: 3,
         },
         products = ['candycane']
     ),
@@ -2494,6 +2476,8 @@ if ewcfg.slimernalia_active:
         str_name = "Wearable Lights",
         alias = [
             "thatmomentinachristmasfilmwherethedadgetsstuckinchristmaslightsanditssupposedtobefunnyithinkjimcarrywasinit",
+            "itwasnationallampoonschristmasvacation"
+            "thedudewasntevenelectrocutedlikeonthedvdcoverartworstmoviezerooutoften"
             "wearablefestivelights"
         ],
         ingredients = {
@@ -2502,7 +2486,22 @@ if ewcfg.slimernalia_active:
         },
         products = ['wearablelights']
     ),
-    
+]
+
+
+if ewcfg.dh_active:
+    smelting_recipe_list.extend([ #Accepts only one addition, so if someone wants to add more: change append to extend.
+    EwSmeltingRecipe(
+        id_recipe = "ticket",
+        str_name = "Ticket to the White Line",
+        alias = [
+            "tickettohell",
+        ],
+        ingredients = {
+            ewcfg.item_id_doublehalloweengrist: 100,
+        },
+    products = ['ticket']
+    ),
 ])
 
 # smelting_recipe_list += ewdebug.debugrecipes
