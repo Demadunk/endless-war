@@ -203,6 +203,9 @@ async def display_blurb_context(cmd):
 
 
 async def delete_blurb(cmd):
+    if not 0 < ewrolemgr.check_clearance(member=cmd.message.author) < 4:
+        return await cmd_utils.fake_failed_command(cmd)
+    
     to_delete = ewutils.getIntToken(tokens = cmd.tokens, allow_all = True)
     checked = EwBlurb(id_server=cmd.guild.id, id_blurb=to_delete)
     if checked.context != "" and checked.context != None:
