@@ -1039,6 +1039,9 @@ async def item_use(cmd):
             elif context == "thedroplet":
                 response = "You stole Slimernalia, you scrooge! What do you have to say for yourself?"
 
+            elif context == "discontinuedscrap":
+                response = "No, you fucking idiot. Try \"!wcim discontinuedscrap\"."
+
 
 
         if response is not None: resp_ctn.add_channel_response(cmd.message.channel, fe_utils.formatMessage((cmd.message.author if use_mention_displayname == False else cmd.mentions[0]), response))

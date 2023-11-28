@@ -3078,6 +3078,7 @@ item_id_civilianscalp = "civilianscalp"
 item_id_modelovaccine = "modelovirusvaccine"
 item_id_key = "key"
 item_id_emptyslimebottle = "emptyslimebottle"
+item_id_discontinuedscrap = "discontinuedscrap"
 
 # SLIMERNALIA
 item_id_sigillaria = "sigillaria"
@@ -3345,7 +3346,7 @@ goonscape_farm_stat = "farming"
 goonscape_eat_stat = "feasting"
 goonscape_clout_stat = "clout"
 goonscape_pee_stat = "piss"
-# Double Halloween 2022 Exclusive
+# Double Halloween Exclusive
 goonscape_halloweening_stat = "halloween"
 
 # Database columns for goonscape stats
@@ -3361,7 +3362,7 @@ col_id_clout_level = goonscape_clout_stat + "_level"
 col_id_clout_xp = goonscape_clout_stat + "_xp"
 col_id_peeing_level = goonscape_pee_stat + "_level"
 col_id_peeing_xp = goonscape_pee_stat + "_xp"
-# Double Halloween 2022
+# Double Halloween Exclusive
 col_id_halloweening_level = goonscape_halloweening_stat + "_level"
 col_id_halloweening_xp = goonscape_halloweening_stat + "_xp"
 
@@ -4498,7 +4499,7 @@ enemy_type_microgullswarm = 'microgullswarm'
 enemy_type_policeofficer = 'policeofficer'
 # Raid bosses
 enemy_type_megaslime = 'megaslime'
-
+enemy_type_thegull = 'thegull'
 enemy_type_slimeasaurusrex = 'slimeasaurusrex'
 enemy_type_greeneyesslimedragon = 'greeneyesslimedragon'
 enemy_type_unnervingfightingoperator = 'unnervingfightingoperator'
@@ -4560,7 +4561,7 @@ common_enemies = []
 common_enemies = [enemy_type_sandbag, enemy_type_juvie, enemy_type_dinoslime]
 uncommon_enemies = [enemy_type_slimeadactyl, enemy_type_desertraider, enemy_type_mammoslime, enemy_type_spacecarp]
 rare_enemies = [enemy_type_microslime, enemy_type_slimeofgreed, enemy_type_mammoslimebull, enemy_type_microgullswarm]
-raid_bosses = [enemy_type_megaslime, enemy_type_slimeasaurusrex, enemy_type_greeneyesslimedragon, enemy_type_unnervingfightingoperator, enemy_type_titanoslime]
+raid_bosses = [enemy_type_megaslime, enemy_type_slimeasaurusrex, enemy_type_greeneyesslimedragon, enemy_type_unnervingfightingoperator, enemy_type_titanoslime, enemy_type_thegull]
 enemy_movers = [enemy_type_megaslime, enemy_type_slimeasaurusrex, enemy_type_greeneyesslimedragon, enemy_type_unnervingfightingoperator, enemy_type_titanoslime]
 defense_up_enemies = [enemy_type_mutatedbarrel, enemy_type_alm]
 raid_den_bosses = [enemy_type_alm]
@@ -4590,7 +4591,7 @@ radiation_storm_enemies = [enemy_type_deathclaw, enemy_type_mutatedbarrel]
 raid_boss_tiers = {
     "micro": [enemy_type_megaslime, enemy_type_slimernaliajuvie],
     "monstrous": [enemy_type_slimeasaurusrex, enemy_type_unnervingfightingoperator, enemy_type_miserablemiser],
-    "mega": [enemy_type_greeneyesslimedragon, enemy_type_titanoslime, enemy_type_slimernaliagangster],
+    "mega": [enemy_type_greeneyesslimedragon, enemy_type_titanoslime, enemy_type_slimernaliagangster, enemy_type_thegull],
     # This can be left empty until we get more raid boss ideas.
     # "nega": [],
 }
@@ -4776,7 +4777,12 @@ enemy_drop_tables = {
         {item_id_moonrock: [50, 1, 1]},
     ],
     enemy_type_microgullswarm: [
-        {item_id_feather: [5, 1, 1]}
+        {item_id_feather: [50, 1, 1]}
+    ],
+    enemy_type_thegull: [
+        {item_id_rainwing: [50, 1, 1]},
+        {item_id_slimepoudrin: [100, 3, 7]},
+        {item_id_feather: [100, 1, 3]},
     ],
     enemy_type_policeofficer: [
         {"copbadge":[100, 1, 1]}
@@ -5124,6 +5130,14 @@ enemy_data_table = {
         "description": "\n\n> A bunch of little fucking birds. What else can be written about these?\n - *Encyclopædia Limus*, NLACakaNM Museum of History",
         "raredescription": "\n\n> When many Micro Gull Swarms meet, they form a Micro Gull Cloud. These masses of bird can act as one mind, making them a horrifically deadly phenomenon.\n - *Encyclopædia Limus*, NLACakaNM Museum of History",
     },
+    enemy_type_thegull: {
+		"slimerange": [3500000, 7000000],
+		"ai": enemy_ai_attacker_a,
+		"attacktype": enemy_attacktype_beak,
+		"displayname": "The Gull",
+		"raredisplayname": "The Land-Gull",
+		"aliases": ["seagull", "thegull", "seabird", "cgull", "landgull"]
+	},
     enemy_type_civilian: {
         "slimerange": [100001, 100001],
         "ai": enemy_ai_attacker_a,
@@ -5488,19 +5502,19 @@ poi_events = random_poi_events + [event_type_raid_den, event_type_rally, event_t
 
 # DH dates
 day_map = {
-    datetime.date(2022, 10, 28): 0,
-    datetime.date(2022, 10, 29): 1,
-    datetime.date(2022, 10, 30): 2,
-    datetime.date(2022, 10, 31): 3,
-    datetime.date(2022, 11, 1):  4,
-    datetime.date(2022, 11, 2):  5,
-    datetime.date(2022, 11, 3):  6,
-    datetime.date(2022, 11, 4):  7,
-    datetime.date(2022, 11, 5):  8,
-    datetime.date(2022, 11, 6):  9,
-    datetime.date(2022, 11, 7):  9,
-    datetime.date(2022, 11, 8):  9,
-    datetime.date(2022, 11, 9):  9,
+    datetime.date(2023, 10, 28): 0,
+    datetime.date(2023, 10, 29): 1,
+    datetime.date(2023, 10, 30): 2,
+    datetime.date(2023, 10, 31): 3,
+    datetime.date(2023, 11, 1):  4,
+    datetime.date(2023, 11, 2):  5,
+    datetime.date(2023, 11, 3):  6,
+    datetime.date(2023, 11, 4):  7,
+    datetime.date(2023, 11, 5):  8,
+    datetime.date(2023, 11, 6):  9,
+    datetime.date(2023, 11, 7):  9,
+    datetime.date(2023, 11, 8):  9,
+    datetime.date(2023, 11, 9):  9,
 }
 
 # Events that need to be checked up on every time the market updates

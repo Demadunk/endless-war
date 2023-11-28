@@ -1249,12 +1249,12 @@ if slimernalia_active == True:
         slime = "moon",
     ),
     EwFish(
-        id_fish = "bufferpufferfish",
-        str_name = "Buffer Pufferfish",
+        id_fish = "colonelbarnacle",
+        str_name = "Colonel Barnacle",
         rarity = "promo",
         catch_time = None,
         catch_weather = None,
-        str_desc = "An opportunistic predator, it waits until their prey has tired out and unable to act. Watch out for those hook shaped spines!",
+        str_desc = "Known to be poisonous enough to where it poisons itself. It's dead, yet it lives to spite that fact.",
         slime = "void",
     ),
 ])

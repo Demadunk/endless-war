@@ -405,6 +405,7 @@ async def attack(cmd):
             else:
                 foreskin = False
 
+            
 
 
             # Lets throw a little scalp and/or foreskin creation in here
@@ -423,6 +424,18 @@ async def attack(cmd):
                         'furniture_look_desc': "There's a sigillaria of {}.".format(target_member.display_name),
                     }
                 )
+                if bounty >= 1000000 or ctn.slimes_spent >= 1000000 or random.randint(0,9) == 9 and target.slimelevel >= 35: # Prevents gooners spawncamping victims for gaining the system -- hello gooners reading this!
+                    bknd_item.item_create(
+                        item_type=ewcfg.it_item,
+                        id_user=attacker_member.id,
+                        id_server=cmd.guild.id,
+                        item_props={
+                            'id_item': ewcfg.item_id_discontinuedscrap,
+                            'item_name': "Discontinued Scrap",
+                            'item_desc': "An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt previously discontinued items from previous or current deadbeat developers.",
+                            'context': "discontinuedscrap"
+                        }
+                    )
             elif foreskin:
                 bknd_item.item_create(
                     item_type=ewcfg.it_cosmetic,

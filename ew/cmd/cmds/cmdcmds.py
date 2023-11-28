@@ -1661,7 +1661,7 @@ async def fashion(cmd):
 
 async def recycle(cmd):
     user_data = EwUser(member=cmd.message.author)
-
+    scrapobtained = False
     response = ""
 
     if user_data.poi != ewcfg.poi_id_recyclingplant:
@@ -1704,6 +1704,19 @@ async def recycle(cmd):
             bknd_item.item_delete(id_item=item.id_item)
 
             pay = int(random.random() * 10 ** random.randrange(2, 6))
+            if random.randint(0,99) == 99 and item.item_props.get('id_furniture') != 'sord':
+                bknd_item.item_create(
+                        item_type=ewcfg.it_item,
+                        id_user=cmd.message.author.id,
+                        id_server=cmd.guild.id,
+                        item_props={
+                            'id_item': ewcfg.item_id_discontinuedscrap,
+                            'item_name': "Discontinued Scrap",
+                            'item_desc': "An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt previously discontinued items from previous or current deadbeat developers.",
+                            'context': "discontinuedscrap"
+                        }
+                    )
+                scrapobtained = True
             response = "You put your {} into the designated opening. **CRUSH! Splat!** *hiss...* and it's gone. \"Thanks for keeping the city clean.\" a robotic voice informs you.".format(item_sought.get("name"))
             if item.item_props.get('id_furniture') == 'sord':
                 response = "You jam the jpeg artifact into the recycling bin. It churns and sputters, desperately trying to turn it into anything of value. Needless to say, it fails. \"get a load of this hornses ass.\" a robotic voice informs you"
@@ -1712,6 +1725,8 @@ async def recycle(cmd):
                     response += ", nabbing 1 SlimeCoin from you out of spite."
                     user_data.change_slimecoin(n=-1, coinsource=ewcfg.coinsource_recycle)
                     user_data.persist()
+                elif scrapobtained == True:
+                    response += "\nOh, and you swindle away something from the recycling plant while nobody is looking."
                 else:
                     response += "."
             elif pay == 0:
@@ -2708,7 +2723,7 @@ async def prank(cmd):
                     item_action, response, use_mention_displayname, side_effect = await prank_utils.prank_item_effect_response(cmd, item)
                     if side_effect != "":
                         response += await itm_utils.perform_prank_item_side_effect(side_effect, cmd=cmd)
-
+                    
                     response = pluck_response + response
 
                 elif item.item_props['prank_type'] == ewcfg.prank_type_trap:

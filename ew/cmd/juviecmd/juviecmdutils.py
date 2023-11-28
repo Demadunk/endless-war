@@ -812,17 +812,15 @@ def check_for_minecollapse(cmd, world_events, mine_action):
                 # If the player enters the right captcha
                 if (captcha.lower() in tokens_lower) and captcha_count == 1:
                     if mine_action.toolused == ewcfg.weapon_id_sledgehammer and ewcfg.slimernalia_active:
-                        # Horribly overpowered unbalanced numbers. Calc this shit when adding stuff I stg
                         mine_action.valid = True
                         mine_action.collapse = False
-                        mine_action.bonus_slime_yield += random.randint(30000, 60000) 
-                        mine_action.unearthed_item_chance = 1
-                        mine_action.unearthed_item_amount = random.randint(1, 3)
+                        mine_action.bonus_slime_yield += random.randint(4000, 5000) 
                         mine_action.response = f"You bludgeon the shifting earth around you, keeping the mineshaft intact while exposing pockets of slime.\
-                            \nYour reckless mining has gotten you an extra {mine_action.bonus_slime_yield} slime and {mine_action.unearthed_item_amount} Slime Poudrins!\n"
+                            \nYour reckless mining has gotten you an extra {mine_action.bonus_slime_yield} slime!\n"
                     else:
                         mine_action.valid = True
                         mine_action.collapse = False
+
                         mine_action.response = "You escape from the collapsing mineshaft."
 
                     # Delete worldevent - YIKES! I know, but I can't think of a better way to handle these ugly things.

@@ -29,7 +29,7 @@ def get_move_speed(user_data):
     if user_data.life_state == ewcfg.life_state_corpse and ewcfg.dh_active:
         move_speed *= 2
 
-    move_speed *= rutils.debug256(id_server=user_data.id_server)
+    # move_speed *= rutils.debug256(id_server=user_data.id_server)
 
     move_speed = max(0.1, move_speed)
     if ewutils.DEBUG_OPTIONS.get('speed2x') == True:

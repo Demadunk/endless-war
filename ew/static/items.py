@@ -451,7 +451,7 @@ item_list = [
     EwGeneralItem(
         id_item=ewcfg.item_id_faggot,
         str_name="faggot",
-        str_desc="Wow, incredible! We’ve evolved from one dumb stick to several, all tied together for the sake of a retarded pseudo-pun! Truly, ENDLESS WAR has reached its peak. It’s all downhill from here, folks.",
+        str_desc="Wow, incredible! We’ve evolved from one dumb stick to several, all tied together for the sake of a bottom-of-the-barrel pseudo-pun! Truly, ENDLESS WAR has reached its peak. It’s all downhill from here, folks.",
         acquisition=ewcfg.acquisition_smelting
     ),
     EwGeneralItem(
@@ -2010,6 +2010,12 @@ EwGeneralItem(
         price=15000,
         vendors=[ewcfg.vendor_bazaar],
     ),
+    EwGeneralItem(
+        id_item=ewcfg.item_id_discontinuedscrap,
+        str_name="Discontinued Scrap",
+        str_desc="An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt previously discontinued items from previous or current deadbeat developers.",
+        context="discontinuedscrap",
+    ),
 ]
 # item_list += ewdebug.debugitem_set
 
@@ -3489,6 +3495,24 @@ furniture_list = [
         furniture_look_desc = "A pillow stuffed with red glowing feathers magnificently rests upon their bed.",
     ),
     EwFurniture(
+        id_furniture = "seagulldownpillow",
+        str_name = "seagull down pillow",
+        str_desc = "A pillow stuffed with the feathers of a particularly wet bird. You couldn't think of a single better use for those. Nope, not a one.",
+        rarity = "Patrician",
+        acquisition = "smelting",
+        furniture_place_desc = "You fling the pillow on your bedding of choice. The bed already looks like you pissed yourself sleeping thanks to the pillow soaking up the place.",
+        furniture_look_desc = "A soaking pillow stuffed with rain wing feathers has rendered their bedsheets soaked.",
+    ),
+    EwFurniture(
+        id_furniture = "regulardownpillow",
+        str_name = "feather down pillow",
+        str_desc = "A pillow stuffed with the feathers of a particularly tiny bird. You couldn't think of a single better use for those. Nope, not a one.",
+        rarity = "Patrician",
+        acquisition = "smelting",
+        furniture_place_desc = "You fling the pillow on your bedding of choice. There's nothing spectacular to mention.",
+        furniture_look_desc = "A pillow stuffed with feathers lay upon their bed.",
+    ),
+    EwFurniture(
         id_furniture = "honeycombcouch",
         str_name = "Honeycomb Couch",
         str_desc = "A hexagonal couch made entirely from honeycombs. It's sticky, and covered bees, and, uh... not couch-shaped.",
@@ -3504,6 +3528,7 @@ furniture_list = [
         rarity = "Patrician",
         furniture_place_desc = "You set up an entire garden, taking up half of the room. It's filled with joybeans, pawpaws, aushucks!",
         furniture_look_desc = "Half of their apartment is literally just a garden.",
+        acquisition = "smelting", # ONLY through discontinued scraps.
     ),
     EwFurniture(
         id_furniture = "partypoppeppertrophy",
