@@ -409,7 +409,6 @@ async def attack(cmd):
 
 
             # Lets throw a little scalp and/or foreskin creation in here
-            # Lets throw a little scalp creation in here
             if ewcfg.slimernalia_active:
                 bknd_item.item_create(
                     item_type=ewcfg.it_furniture,
@@ -432,7 +431,7 @@ async def attack(cmd):
                         item_props={
                             'id_item': ewcfg.item_id_discontinuedscrap,
                             'item_name': "Discontinued Scrap",
-                            'item_desc': "An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt previously discontinued items from previous or current deadbeat developers.",
+                            'item_desc': "An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt discontinued items from previous or current deadbeat developers.",
                             'context': "discontinuedscrap"
                         }
                     )

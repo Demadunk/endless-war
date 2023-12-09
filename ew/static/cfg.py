@@ -30,7 +30,7 @@ territory_time_gain = 10
 #Double Halloween Features
 dh_active = True
 #Existing Stages for Double Halloween. As the years go by we may add on to this
-dh_stage = 0
+dh_stage = 1
 
 #Slimernalia Features
 slimernalia_active = True
@@ -5502,19 +5502,19 @@ poi_events = random_poi_events + [event_type_raid_den, event_type_rally, event_t
 
 # DH dates
 day_map = {
-    datetime.date(2023, 10, 28): 0,
-    datetime.date(2023, 10, 29): 1,
-    datetime.date(2023, 10, 30): 2,
-    datetime.date(2023, 10, 31): 3,
-    datetime.date(2023, 11, 1):  4,
-    datetime.date(2023, 11, 2):  5,
-    datetime.date(2023, 11, 3):  6,
-    datetime.date(2023, 11, 4):  7,
-    datetime.date(2023, 11, 5):  8,
-    datetime.date(2023, 11, 6):  9,
-    datetime.date(2023, 11, 7):  9,
-    datetime.date(2023, 11, 8):  9,
-    datetime.date(2023, 11, 9):  9,
+    datetime.date(2023, 12, 7): 0,
+    datetime.date(2023, 12, 8): 1,
+    datetime.date(2023, 12, 9): 2,
+    datetime.date(2023, 12, 10): 3,
+    datetime.date(2023, 12, 1):  4,
+    datetime.date(2023, 12, 2):  5,
+    datetime.date(2023, 12, 3):  6,
+    datetime.date(2023, 12, 4):  7,
+    datetime.date(2023, 12, 5):  8,
+    datetime.date(2023, 12, 6):  9,
+    datetime.date(2023, 1, 1):  9,
+    datetime.date(2023, 1, 2):  9,
+    datetime.date(2023, 1, 3):  9,
 }
 
 # Events that need to be checked up on every time the market updates

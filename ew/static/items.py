@@ -2013,7 +2013,7 @@ EwGeneralItem(
     EwGeneralItem(
         id_item=ewcfg.item_id_discontinuedscrap,
         str_name="Discontinued Scrap",
-        str_desc="An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt previously discontinued items from previous or current deadbeat developers.",
+        str_desc="An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt discontinued items from previous or current deadbeat developers.",
         context="discontinuedscrap",
     ),
 ]
