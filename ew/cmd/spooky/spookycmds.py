@@ -298,9 +298,6 @@ async def haunt(cmd):
                 haunted_slimes = int((haunted_data.slimes / ewcfg.slimes_hauntratio) * haunt_power_multiplier)
                 slimes_lost = int(haunted_slimes / 5)  # hauntee only loses 1/5th of what the ghost gets as antislime
 
-                if ewcfg.dh_stage >= 8:
-                    haunted_slimes *= 10
-
                 if ewcfg.mutation_id_coleblooded in target_mutations:
                     haunted_slimes = -10000
                     if user_data.slimes > haunted_slimes:

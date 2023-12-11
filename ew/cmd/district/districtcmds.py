@@ -189,7 +189,7 @@ async def abduct(cmd):
         response = "Abduct what, dumbass? My patience?"
     elif not protected:
         response = "The aliens aren't gonna let you start the ship. You're basically their captive now."
-    elif not ewcfg.dh_active or ewcfg.dh_stage != 30:
+    elif not ewcfg.dh_active or ewcfg.dh_stage != 300:
         response = "Wait, your alien espionage is waaaay out of season."
     elif cmd.mentions_count == 0:
         response = "Abduct who?"

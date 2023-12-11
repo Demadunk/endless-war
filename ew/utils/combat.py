@@ -1118,10 +1118,7 @@ def damage_mod_attack(user_data, market_data, user_mutations, district_data, sho
 
     # Weapon possession
     if user_data.get_possession('weapon'):
-        if ewcfg.dh_stage < 8:
-            damage_mod *= 1.2
-        else:
-            damage_mod *= 2
+        damage_mod *= 1.2
 
     # Lone wolf
     if ewcfg.mutation_id_lonewolf in user_mutations:
@@ -1197,10 +1194,8 @@ def damage_mod_cap(user_data, market_data, user_mutations, district_data, weapon
 
     # Weapon possession
     if user_data.get_possession('weapon'):
-        if ewcfg.dh_stage < 8:
-            damage_mod *= 1.2
-        else:
-            damage_mod *= 2
+        damage_mod *= 1.2
+
 
     if weapon.id_weapon == ewcfg.weapon_id_thinnerbomb:
         if user_data.faction == district_data.controlling_faction:

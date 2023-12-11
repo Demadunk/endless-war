@@ -821,7 +821,7 @@ async def spawn_enemies(id_server = None, debug = False):
 
 
 
-    if ewcfg.dh_active and ewcfg.dh_stage >= 1:
+    if ewcfg.dh_active and ewcfg.dh_stage >= 9:
         dhspawn = EwGamestate(id_server = id_server, id_state='dhorsemankills')
         count = int(dhspawn.value)
         if count < 2:

@@ -5502,19 +5502,19 @@ poi_events = random_poi_events + [event_type_raid_den, event_type_rally, event_t
 
 # DH dates
 day_map = {
-    datetime.date(2023, 12, 7): 0,
-    datetime.date(2023, 12, 8): 1,
-    datetime.date(2023, 12, 9): 2,
-    datetime.date(2023, 12, 10): 3,
-    datetime.date(2023, 12, 1):  4,
-    datetime.date(2023, 12, 2):  5,
-    datetime.date(2023, 12, 3):  6,
-    datetime.date(2023, 12, 4):  7,
-    datetime.date(2023, 12, 5):  8,
-    datetime.date(2023, 12, 6):  9,
-    datetime.date(2023, 1, 1):  9,
-    datetime.date(2023, 1, 2):  9,
-    datetime.date(2023, 1, 3):  9,
+    datetime.date(2023, 12, 21): 1,
+    datetime.date(2023, 12, 22): 1,
+    datetime.date(2023, 12, 23): 1,
+    datetime.date(2023, 12, 24): 1,
+    datetime.date(2023, 12, 25):  9,
+    datetime.date(2023, 12, 26):  1,
+    datetime.date(2023, 12, 27):  1,
+    datetime.date(2023, 12, 28):  1,
+    datetime.date(2023, 12, 29):  1,
+    datetime.date(2023, 12, 30):  1,
+    datetime.date(2023, 12, 31):  9,
+    datetime.date(2024, 1, 1):  9,
+    datetime.date(2024, 1, 2):  1,
 }
 
 # Events that need to be checked up on every time the market updates

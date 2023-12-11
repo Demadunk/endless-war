@@ -173,14 +173,14 @@ def spawn_enemy(
             if enemytype in ewcfg.raid_bosses:
                 enemytype = random.choice(ewcfg.arctic_enemies)
 
-        if ewcfg.dh_stage >= 3 and enemytype in ewcfg.dh_v_enemies:
+        if ewcfg.dh_stage >= 1 and enemytype in ewcfg.dh_v_enemies:
             variant = 2 # DH
 
     else:
         if pre_chosen_poi == None:
             return
 
-    if ewcfg.dh_stage >= 3 and enemytype in ewcfg.dh_v_enemies:
+    if ewcfg.dh_stage >= 1 and enemytype in ewcfg.dh_v_enemies:
         variant = 2 # DH
         
     if pre_chosen_poi != None:

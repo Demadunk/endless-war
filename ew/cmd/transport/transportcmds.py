@@ -78,7 +78,7 @@ async def embark(cmd):
             if transport_data.current_line == transport_line.id_line:
                 ticket = None
 
-                if ewcfg.dh_active and ewcfg.dh_stage >= 100:
+                if ewcfg.dh_active and ewcfg.dh_stage >= 1:
                     user_data = EwUser(member = cmd.message.author)
                     if user_data.poi in [ewcfg.poi_id_dt_subway_station, ewcfg.poi_id_rr_subway_station, ewcfg.poi_id_jr_subway_station]:
                         if transport_line.id_line in [ewcfg.transport_line_subway_white_eastbound, ewcfg.transport_line_subway_white_westbound]:

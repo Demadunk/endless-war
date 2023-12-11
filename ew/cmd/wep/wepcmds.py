@@ -201,7 +201,7 @@ async def attack(cmd):
                 to_district = ctn.slimes_damage/4
 
         # nosferatu gives attacker 60% of splatter
-        if to_district > 0 and (ewcfg.mutation_id_nosferatu in attacker_mutations or ewcfg.dh_stage >= 4) and (20 <= market_data.clock or market_data.clock < 6):
+        if to_district > 0 and ewcfg.mutation_id_nosferatu in attacker_mutations and (20 <= market_data.clock or market_data.clock < 6):
             to_attacker += to_district * 0.6
             to_district *= 0.4
 

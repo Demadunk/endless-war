@@ -801,8 +801,8 @@ cosmetic_items_list = [
     ),
     EwCosmeticItem(
         id_cosmetic = "halloweenmedallion",
-        str_name = "Grimy Double Halloween Medallion",
-        str_desc = "A muddied crystal medallion, carved in the shape of a pumpkin. It's strewn together with black pearls, with \"1,629,846,599\" engraved on the back. Awarded only to the bravest of souls who managed to best the Begrimed Double Headless Double Horseman in combat.",
+        str_name = "Double Halloween Medallion",
+        str_desc = "A glistening crystal medallion, carved in the shape of a pumpkin. It is strewn together with black pearls. Awarded only to the bravest of souls who managed to best the Double Headless Double Horseman in combat.",
         rarity = "Double Halloween",
         style = "cool",
         ingredients = "HorsemanSoul",
