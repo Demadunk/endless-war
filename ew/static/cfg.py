@@ -3078,7 +3078,6 @@ item_id_civilianscalp = "civilianscalp"
 item_id_modelovaccine = "modelovirusvaccine"
 item_id_key = "key"
 item_id_emptyslimebottle = "emptyslimebottle"
-item_id_discontinuedscrap = "discontinuedscrap"
 
 # SLIMERNALIA
 item_id_sigillaria = "sigillaria"
@@ -3966,7 +3965,6 @@ status_dueling = "dueling"
 
 time_expire_burn = 12
 time_expire_high = 30 * 60  # 30 minutes
-time_expire_poserhigh = 3 * 60  # 3 minutes
 
 time_expire_repel_base = 60 * 60 * 3  # 3 hours
 
@@ -5502,6 +5500,8 @@ poi_events = random_poi_events + [event_type_raid_den, event_type_rally, event_t
 
 # DH dates
 day_map = {
+    datetime.date(2023, 12, 14): 9,
+    datetime.date(2023, 12, 15): 9,
     datetime.date(2023, 12, 21): 1,
     datetime.date(2023, 12, 22): 1,
     datetime.date(2023, 12, 23): 1,

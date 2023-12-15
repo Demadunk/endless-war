@@ -1039,10 +1039,6 @@ async def item_use(cmd):
             elif context == "thedroplet":
                 response = "You stole Slimernalia, you scrooge! What do you have to say for yourself?"
 
-            elif context == "discontinuedscrap":
-                response = "No, you fucking idiot. Try \"!wcim discontinuedscrap\"."
-
-
 
         if response is not None: resp_ctn.add_channel_response(cmd.message.channel, fe_utils.formatMessage((cmd.message.author if use_mention_displayname == False else cmd.mentions[0]), response))
         for resp in responses: resp_ctn.add_channel_response(cmd.message.channel, resp)
@@ -2267,7 +2263,7 @@ async def huff(cmd):
         item = EwItem(id_item=item_sought.get('id_item'))
 
 
-        if ewcfg.status_thinned_id in status or ewcfg.status_huffed_id in status:
+        if ewcfg.status_thinned_id in status:
             response = "Don't OD now, bro. You're fucked out as it is."
         elif not item_sought:
 
@@ -2276,9 +2272,9 @@ async def huff(cmd):
             response = "Nice try, dumpass. Them's fake drugs."
         else:
             if item.template == ewcfg.weapon_id_spraycan:
-                response = "Time to see some stars. You unload the entire aerosol can of spraypaint on your teeth. The can now useless as you stumple around, but suddenly the world looks so vivid."
+                response = "Time to see some stars. You unload the entire aerosol can of spraypaint on your teeth. The can is now useless as you stumble around, but suddenly the world looks so vivid."
                 bknd_item.item_delete(id_item=item.id_item)
-                user_data.applyStatus(id_status=ewcfg.status_huffed_id)
+                user_data.applyStatus(id_status=ewcfg.status_thinned_id, multiplier=.1)
             else:
                 response = "Time to see some stars. You take a huge whiff out of one of your thinnerbombs. It breaks as you stumble around, but suddenly the world looks so vivid."
                 bknd_item.item_delete(id_item=item.id_item)

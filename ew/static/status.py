@@ -88,14 +88,8 @@ status_effect_list = [
     EwStatusEffectDef(
         id_status=ewcfg.status_thinned_id,
         time_expire=ewcfg.time_expire_high,
-        str_describe="They are gassed up on paint thinner.",
-        str_describe_self="You are gassed up on paint thinner."
-    ),
-    EwStatusEffectDef(
-        id_status=ewcfg.status_huffed_id,
-        time_expire=ewcfg.time_expire_poserhigh,
-        str_describe="They have huffed spraypaint.",
-        str_describe_self="You have huffed spraypaint."
+        str_describe="They are gassed up on paint fumes.",
+        str_describe_self="You are gassed up on paint fumes."
     ),
     EwStatusEffectDef(
         id_status=ewcfg.status_evasive_id,

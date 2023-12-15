@@ -2010,12 +2010,6 @@ EwGeneralItem(
         price=15000,
         vendors=[ewcfg.vendor_bazaar],
     ),
-    EwGeneralItem(
-        id_item=ewcfg.item_id_discontinuedscrap,
-        str_name="Discontinued Scrap",
-        str_desc="An unintelligible scrap of material. Completely useless on its own, meant as an ingredient to smelt discontinued items from previous or current deadbeat developers.",
-        context="discontinuedscrap",
-    ),
 ]
 # item_list += ewdebug.debugitem_set
 
@@ -3528,7 +3522,6 @@ furniture_list = [
         rarity = "Patrician",
         furniture_place_desc = "You set up an entire garden, taking up half of the room. It's filled with joybeans, pawpaws, aushucks!",
         furniture_look_desc = "Half of their apartment is literally just a garden.",
-        acquisition = "smelting", # ONLY through discontinued scraps.
     ),
     EwFurniture(
         id_furniture = "partypoppeppertrophy",

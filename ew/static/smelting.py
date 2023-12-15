@@ -2485,39 +2485,6 @@ EwSmeltingRecipe(
         },
         products = ['wearablelights']
     ),
-    EwSmeltingRecipe(
-        id_recipe="safariitem",
-        str_name="something unobtainable from the safari event",
-        alias=[
-            "safari",
-        ],
-        ingredients={
-            ewcfg.item_id_discontinuedscrap: 2,
-        },
-        products=['safaribadge', 'garfieldtail', 'normalplume', 'ominousslippers', 'navaluniform', 'guillotinecharm', 'phoenixdown']
-    ),
-    EwSmeltingRecipe(
-        id_recipe="gankeritem",
-        str_name="something unobtainable from the garden gankers event",
-        alias=[
-            "gankers", "ganker"
-        ],
-        ingredients={
-            ewcfg.item_id_discontinuedscrap: 2,
-        },
-        products=['entiregarden', 'honeycombcouch', 'gardengankerpin', 'rosehairclip', 'dionaeashawl', 'cornearrings']
-    ),
-    EwSmeltingRecipe(
-        id_recipe="nmsitem",
-        str_name="something unobtainable from the NMS event",
-        alias=[
-            "nms", "drugevent"
-        ],
-        ingredients={
-            ewcfg.item_id_discontinuedscrap: 2,
-        },
-        products=['nmsmascothead', 'nmsmascottorso', 'nmsmascotlegs', 'nmsmascotwings', 'nmsmascotwheels', 'nmspennant', 'nmschair', 'nmsbedsheets', 'nmshotplate', 'nmsdesk', 'nmsdiploma']
-    ),
 ]
 
 
