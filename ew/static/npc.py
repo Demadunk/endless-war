@@ -785,6 +785,52 @@ EwNpc(
     starting_statuses = ['6leveltrainer', ewcfg.status_enemy_trainer_id],
     is_threat=False
 ),
+EwNpc(
+    id_npc = "avgr",
+    active = True,
+    str_name = "Angry Video Game Rowdy", 
+    poi_list = poi_static.capturable_districts,
+    dialogue = {"talk":["What were they thinking with this shitload of fuck?", "Let me ask a question: what do you get when you take a podcast that's ASS and you make it into a game? You get a piece of shit!", "Go purple for putrid gameplay.", "WHAT WERE THEY THINKING!?", "I think I'm going to play Super Mario World! Fuck yeah! That game's awesome!", "This game's a MUD, and playing it is just like muddying your shoes in dogshit!", "https://www.youtube.com/watch?v=JFvtk5toGJg&t=373s", "**ASS!**", "I can't take this many references...", "It's a sad thing when the best thing in the game is playing roulette!", "First the developers nerf my ass by making me slower to hit people, THEN they don't let me get more slime? WHAT WERE THEY THINKING!?", "Fuck this, I'm leaving the server. Or at least I would if I wasn't a fucking NPC! FUCK!! THIS IS TORTURE!"],
+                "hit":["**GODDAMNIT!**", "**FUCKING BULLSHIT!**", "**SHIT!** Come on!"],
+                "die":["This game sucks.", "Ah-duh, ah-duh, duh, that's all, fucks!"],
+                "give":["This is as useful as a Tiger Electronics game.", "I don't want your BULLSHIT!", "Talk about desperate.",],
+                },
+    func_ai = npcutils.condition_hostile_action,
+    image_profile = "https://cdn.discordapp.com/attachments/699776308850327698/1151696956956102756/AngryVideoGameRowdy.png",
+    defaultslime = 2000000,
+    is_threat=True,
+    defaultlevel = 30,
+    rewards = [
+    {ewcfg.item_id_slimepoudrin: [100, 3, 6]},
+    {'pairofpoindexterglasses': [25, 1, 1]},
+    ],
+    slimeoid_name = "Glitch Gremlin",
+    starting_statuses = ['9leveltrainer', ewcfg.status_enemy_trainer_id],
+    condition=lambda user_data, enemy_data: True if (user_data.faction == 'killers' and user_data.life_state == ewcfg.life_state_enlisted) or ewcfg.status_enemy_hostile_id in enemy_data.getStatusEffects() else False
+),
+EwNpc(
+    id_npc = "nostalgiakiller",
+    active = True,
+    str_name = "Nostalgia Killer",
+    poi_list = poi_static.capturable_districts,
+    dialogue = {"talk":["I'm the Nostalgia Killer, I massacre it so you don't have to.", "You know, for kids!", "A killer credit card? They gave him a killer credit card!?", "I always knew police were evil! I knew it! I had a feeling.", "Not funny plus not funny EQUALS NOT FUCKING FUNNY!", "And let me tell you something. This tie? Never coming off.", "As both you and I know, there is no comparison. I am by far the greater talent.", "I'm sorry, is this how purple people act? I mean, I'm purple and even I'm confused.", "THIS IS THE WORST GAME I'VE EVER PLAYED IN MY ENTIRE LIFE! IT SUCKS ASS, IT SUCKS BALLS, IT JUST... SUCKS!", "The Apocalypse has finally begun, pigs are learning how to fly, Satan is skating his way to work, and I'm pretty sure I just became a monkey's uncle!", "I always knew police were evil. I knew it! I had a feeling."],
+                "hit":["AUUUUGH!!", "I'LL KILL YOU! I'LL KILL YOU!", "YOU'LL GET THE GAS!", "AAAAAAAAAAAAAAH HAHAHAHAHAHAH!!!!"],
+                "die":["Everyone's a critic…", "I may be pathetic, but I'm proud."],
+                "give":["This isn't a movie to review, right...?", "Well, I'll be a monkey's uncle!",],
+                },
+    func_ai = npcutils.condition_hostile_action,
+    image_profile = "https://cdn.discordapp.com/attachments/431605021852041237/1023019298354110544/nostalgia_killer.png",
+    defaultslime = 2000000,
+    is_threat=True,
+    defaultlevel = 30,
+    rewards = [
+    {ewcfg.item_id_slimepoudrin: [100, 3, 6]},
+    {'necktie': [25, 1, 1]},
+    ],
+    slimeoid_name = "Bold Lee Flea",
+    starting_statuses = ['9leveltrainer', ewcfg.status_enemy_trainer_id],
+    condition=lambda user_data, enemy_data: True if (user_data.faction == 'rowdys' and user_data.life_state == ewcfg.life_state_enlisted) or ewcfg.status_enemy_hostile_id in enemy_data.getStatusEffects() else False
+),
 ]
 
 for npc in npc_list:

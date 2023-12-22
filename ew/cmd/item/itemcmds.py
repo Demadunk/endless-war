@@ -2258,7 +2258,7 @@ async def unearth(cmd):
 async def huff(cmd):
     user_data = EwUser(member = cmd.message.author)
     status = user_data.getStatusEffects()
-    item_sought = bknd_item.find_item(item_search=ewcfg.weapon_id_thinnerbomb, id_user=cmd.message.author.id, id_server=cmd.guild.id, item_type_filter=ewcfg.it_weapon)
+    item_sought = bknd_item.find_item(item_search=ewcfg.weapon_id_thinnerbomb, id_user=cmd.message.author.id, id_server=cmd.guild.id, item_type_filter=ewcfg.it_weapon) or bknd_item.find_item(item_search=ewcfg.weapon_id_spraycan, id_user=cmd.message.author.id, id_server=cmd.guild.id, item_type_filter=ewcfg.it_weapon)
 
     if item_sought:
         item = EwItem(id_item=item_sought.get('id_item'))
@@ -2267,15 +2267,23 @@ async def huff(cmd):
         if ewcfg.status_thinned_id in status:
             response = "Don't OD now, bro. You're fucked out as it is."
         elif not item_sought:
-            response = "You don't have any paint thinner."
-        elif item.template != ewcfg.weapon_id_thinnerbomb:
+
+            response = "You don't have any paint thinner or spraycans."
+        elif item.template != ewcfg.weapon_id_thinnerbomb and item.template != ewcfg.weapon_id_spraycan:
             response = "Nice try, dumpass. Them's fake drugs."
         else:
-            response = "Time to see some stars. You take a huge whiff out of one of your thinnerbombs. It breaks as you stumble around, but suddenly the world looks so vivd."
-            bknd_item.item_delete(id_item=item.id_item)
-            user_data.applyStatus(id_status=ewcfg.status_thinned_id)
+            if item.template == ewcfg.weapon_id_spraycan:
+                response = "Time to see some stars. You unload the entire aerosol can of spraypaint on your teeth. The can is now useless as you stumble around, but suddenly the world looks so vivid."
+                bknd_item.item_delete(id_item=item.id_item)
+                user_data.applyStatus(id_status=ewcfg.status_thinned_id, multiplier=.1)
+            else:
+                response = "Time to see some stars. You take a huge whiff out of one of your thinnerbombs. It breaks as you stumble around, but suddenly the world looks so vivid."
+                bknd_item.item_delete(id_item=item.id_item)
+                user_data.applyStatus(id_status=ewcfg.status_thinned_id)
+            
+            
     else:
-        response = "You can't get high on your own farts, at least not yet. Get a thinnerbomb and we'll talk."
+        response = "You can't get high on your own farts, at least not yet. Get a thinnerbomb or spraycan and we'll talk."
     return await fe_utils.send_message(cmd.client, cmd.message.channel, fe_utils.formatMessage(cmd.message.author, response))
 
 

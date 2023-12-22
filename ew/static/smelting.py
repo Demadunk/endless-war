@@ -1856,7 +1856,7 @@ smelting_recipe_list = [
             'dhelmet',
         ],
         ingredients={
-            ewcfg.item_id_minecraftdiamond: 5,
+            ewcfg.item_id_minecraftdiamond: 1,
         },
         products=['diamondhelmet']
     ),
@@ -1869,7 +1869,7 @@ smelting_recipe_list = [
             'dchestplate',
         ],
         ingredients={
-            ewcfg.item_id_minecraftdiamond: 8,
+            ewcfg.item_id_minecraftdiamond: 1,
         },
         products=['diamondchestplate']
     ),
@@ -1882,7 +1882,7 @@ smelting_recipe_list = [
             'dleggings',
         ],
         ingredients={
-            ewcfg.item_id_minecraftdiamond: 7,
+            ewcfg.item_id_minecraftdiamond: 1,
         },
         products=['diamondleggings']
     ),
@@ -1895,7 +1895,7 @@ smelting_recipe_list = [
             'dboots',
         ],
         ingredients={
-            ewcfg.item_id_minecraftdiamond: 4,
+            ewcfg.item_id_minecraftdiamond: 1,
         },
         products=['diamondboots']
     ),

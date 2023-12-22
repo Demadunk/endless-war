@@ -1636,7 +1636,7 @@ async def unfreeze(cmd):
         ew_slime_model.persist()
         usermodel.active_slimeoid = ew_slime_model.id_slimeoid
         usermodel.persist()
-        response = "You open the freezer. Your {} stumbles out, desperately gasping for air. {} isn't sure what it did to deserve cryostasis, but it gives you an apologetic yap in order to earn your forgiveness. \n\n {} is now your {}.".format(SlimeoidType, ew_slime_model.name, ew_slime_model.name, ew_slime_model.name, SlimeoidType)
+        response = "You open the freezer. Your {} stumbles out, desperately gasping for air. {} isn't sure what it did to deserve cryostasis, but it gives you an apologetic yap in order to earn your forgiveness. \n\n {} is now your {}.".format(SlimeoidType, ew_slime_model.name, ew_slime_model.name, SlimeoidType)
 
     return await fe_utils.send_message(cmd.client, cmd.message.channel, fe_utils.formatMessage(cmd.message.author, response))
 
